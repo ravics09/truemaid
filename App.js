@@ -1,11 +1,10 @@
 import React from 'react';
 import { View, Text, SafeAreaView, StatusBar } from 'react-native';
+import NavigationProvider from './src/navigation';
 
 const App = () => {
   return(
-    <View>
-      <Text>Hello World</Text>
-    </View>
+    <NavigationProvider/>
   )
 }
 
