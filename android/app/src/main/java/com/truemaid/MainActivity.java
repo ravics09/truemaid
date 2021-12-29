@@ -1,6 +1,5 @@
 package com.truemaid;
 import android.os.Bundle;
-
 import com.facebook.react.ReactActivity;
 
 public class MainActivity extends ReactActivity {
