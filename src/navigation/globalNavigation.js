@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import 'react-native-gesture-handler';
+import {SafeAreaView, StatusBar} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import AsyncStorage from '@react-native-async-storage/async-storage';
