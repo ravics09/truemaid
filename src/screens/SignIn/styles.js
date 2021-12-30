@@ -4,7 +4,7 @@ const Height = Dimensions.get('window').height;
 const styles = StyleSheet.create({
   header: {
     flex: 1,
-    height: Height / 2.1,
+    height: Height / 2,
     backgroundColor: '#181D3D',
   },
   appdName: {
@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
   },
   body: {
     flex: 1,
-    height: Height / 1.5,
+    height: Height / 2,
     backgroundColor: 'orange'
   },
   formSection: {
@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     backgroundColor: '#181D3D',
     borderTopRightRadius: 100,
-    paddingHorizontal:10,
+    paddingHorizontal:10
   },
   welcomeText: {
     color: 'black',
