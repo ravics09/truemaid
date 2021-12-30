@@ -3,19 +3,16 @@ import {
   View,
   Text,
   Image,
-  Dimensions,
-  ScrollView,
 } from 'react-native';
-import {Input, Icon, Button} from 'react-native-elements';
-import LinearGradient from 'react-native-linear-gradient';
-import * as OnboardingImage from './../../utils/constant';
+import {Button} from 'react-native-elements';
 
+import * as OnboardingImage from './../../utils/constant';
 import styles from './styles';
 
 const Launch = ({navigation}) => {
   const [isSubmit, setIsSubmit] = useState(false);
   return (
-    <ScrollView style={{flex: 1}}>
+    <>
       <View style={styles.header}>
         <View style={styles.appdName}>
         <Image source={OnboardingImage.OnboardingImg2} />
@@ -39,11 +36,11 @@ const Launch = ({navigation}) => {
             buttonStyle={styles.customButtn}
             containerStyle={styles.buttonContainer}
             titleStyle={{fontWeight: 'bold', color: 'black'}}
-            // onPress={() => navigation.replace('SignUp')}
+            onPress={() => navigation.replace('SignUp')}
           />
         </View>
       </View>
-    </ScrollView>
+    </>
   );
 };
 

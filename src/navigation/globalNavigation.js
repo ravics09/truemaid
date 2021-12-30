@@ -5,12 +5,13 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import AuthStack from './stackNavigation';
+import * as NavStack from './stackNavigation';
+import SideDrawer from './sideDrawer';
 import Onboarding from './../screens/Onboarding/index';
 
 const Stack = createNativeStackNavigator();
 
-const SwitchNavigation = isFirstTimeLaunch => {
+const SwitchNavigation = (isFirstTimeLaunch, user) => {
   switch (isFirstTimeLaunch) {
     case null:
       return null;
@@ -26,7 +27,12 @@ const SwitchNavigation = isFirstTimeLaunch => {
             />
             <Stack.Screen
               name="Auth"
-              component={AuthStack}
+              component={NavStack.AuthStack}
+              options={{headerShown: false}}
+            />
+            <Stack.Screen
+              name="SideDrawer"
+              component={SideDrawer}
               options={{headerShown: false}}
             />
           </Stack.Navigator>
@@ -36,13 +42,23 @@ const SwitchNavigation = isFirstTimeLaunch => {
     case false:
       return (
         <NavigationContainer>
-          <Stack.Navigator headerMode="none">
-            <Stack.Screen
-              name="Auth"
-              component={AuthStack}
-              options={{headerShown: false}}
-            />
-          </Stack.Navigator>
+          {user ? (
+            <Stack.Navigator headerMode="none">
+              <Stack.Screen
+                name="SideDrawer"
+                component={SideDrawer}
+                options={{headerShown: false}}
+              />
+            </Stack.Navigator>
+          ) : (
+            <Stack.Navigator headerMode="none">
+              <Stack.Screen
+                name="Auth"
+                component={NavStack.AuthStack}
+                options={{headerShown: false}}
+              />
+            </Stack.Navigator>
+          )}
         </NavigationContainer>
       );
       break;
@@ -51,6 +67,7 @@ const SwitchNavigation = isFirstTimeLaunch => {
 
 const GlobalNavigator = () => {
   const [isFirstTimeLaunch, setIsFirstTimeLaunch] = useState(null);
+  const [user, setUser] = useState(true);
 
   useEffect(() => {
     AsyncStorage.getItem('alreadyLaunched').then(value => {
@@ -63,7 +80,7 @@ const GlobalNavigator = () => {
     });
   }, []);
 
-  return <>{SwitchNavigation(isFirstTimeLaunch)}</>;
+  return <>{SwitchNavigation(isFirstTimeLaunch, user)}</>;
 };
 
 export default GlobalNavigator;

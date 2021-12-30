@@ -11,13 +11,13 @@ const styles = StyleSheet.create({
     flex:1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'orange',
+    backgroundColor: '#FD7400',
     borderBottomRightRadius:100,
   },
   body:{
     flex:1,
     height: Height/2,
-    backgroundColor: 'orange',
+    backgroundColor: '#FD7400',
   },
   buttonSection:{
     flex:1,

@@ -19,6 +19,7 @@ const SignIn = ({navigation}) => {
 
   const onSubmitHandler = () => {
     setIsSubmit(true);
+    setTimeout(()=>{navigation.replace('SideDrawer')},2000);
   };
   return (
     <ScrollView style={{flex: 1}}>
