@@ -1,5 +1,11 @@
 import React, {useState} from 'react';
-import {View, Text, TouchableOpacity, Image} from 'react-native';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  ImageBackground,
+  ScrollView,
+} from 'react-native';
 import {Input, Icon, Button} from 'react-native-elements';
 import LinearGradient from 'react-native-linear-gradient';
 import * as OnboardingImage from './../../utils/constant';
@@ -13,64 +19,56 @@ const SignIn = ({navigation}) => {
 
   const onSubmitHandler = () => {
     setIsSubmit(true);
-  }
+  };
   return (
-    <LinearGradient
-      colors={['#F6D242', '#FF52E5']}
-      start={{x: 0, y: 0}}
-      end={{x: 1, y: 1}}
-      style={styles.container}>
+    <ScrollView style={{flex: 1}}>
       <View style={styles.header}>
-        <Text style={styles.welcomeText}>Welcome To True Maid</Text>
-        <Text style={styles.welcomeSubtitle}>
-          Please sign in to your account
-        </Text>
-      </View>
-      <View style={styles.LogoContainer}>
-        {/* <Image
-          // style={{height: 300}}
-          source={OnboardingImage.OnboardingImg2}
-        /> */}
+        <View style={styles.appdName}>
+          <Text style={styles.welcomeText}>Welcome To True Maid</Text>
+          <Text style={styles.welcomeSubtitle}>
+            Please sign in to your account
+          </Text>
+        </View>
       </View>
       <View style={styles.body}>
-        <Input
-          placeholder="Username"
-          onChangeText={setUsername}
-        />
-        <Input
-          placeholder="Password"
-          secureTextEntry={true}
-          onChangeText={setPassword}
-        />
-        <View style={styles.forgotPassword}>
-          <TouchableOpacity
-            onPress={() => alert('You forget your password how?')}>
-            <Text style={styles.footerText}>Forgot your password?</Text>
-          </TouchableOpacity>
-        </View>
-        <Button
-          title="Sign In"
-          loading={isSubmit}
-          buttonStyle={styles.signInButton}
-          containerStyle={styles.buttonContainer}
-          titleStyle={{fontWeight: 'bold'}}
-          onPress={() => onSubmitHandler()}
-        />
-        <Button
-          title="Sign In With Google"
-          onPress={() => alert('You will redirect to home screen')}
-          buttonStyle={styles.signInButton}
-          containerStyle={styles.buttonContainer}
-          titleStyle={{fontWeight: 'bold'}}
-        />
-        <View style={styles.footer}>
-          <Text style={styles.footerText}>Don’t have an account? </Text>
-          <TouchableOpacity onPress={() => navigation.replace('SignUp')}>
-            <Text style={styles.singUpLink}>Sign up</Text>
-          </TouchableOpacity>
+        <View style={styles.formSection}>
+          <Input placeholder="Username" onChangeText={setUsername} style={styles.inputField}/>
+          <Input
+            placeholder="Password"
+            secureTextEntry={true}
+            onChangeText={setPassword}
+            style={styles.inputField}
+          />
+          <View style={styles.forgotPassword}>
+            <TouchableOpacity
+              onPress={() => alert('You forget your password how?')}>
+              <Text style={styles.forgotPasswordText}>Forgot your password?</Text>
+            </TouchableOpacity>
+          </View>
+          <Button
+            title="Sign In"
+            loading={isSubmit}
+            buttonStyle={styles.signInButton}
+            containerStyle={styles.buttonContainer}
+            titleStyle={{fontWeight: 'bold', color: 'black',}}
+            onPress={() => onSubmitHandler()}
+          />
+          <Button
+            title="Sign In With Google"
+            onPress={() => alert('You will redirect to home screen')}
+            buttonStyle={styles.signInButton}
+            containerStyle={styles.buttonContainer}
+            titleStyle={{fontWeight: 'bold', color: 'black'}}
+          />
+          <View style={styles.footer}>
+            <Text style={styles.footerText}>Don’t have an account? </Text>
+            <TouchableOpacity onPress={() => navigation.replace('SignUp')}>
+              <Text style={styles.singUpLink}>Sign up</Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
-    </LinearGradient>
+    </ScrollView>
   );
 };
 

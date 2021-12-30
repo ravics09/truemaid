@@ -1,69 +1,87 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet, Dimensions} from 'react-native';
+const Height = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingHorizontal: 15,
-    paddingBottom:30
-  },
   header: {
-    marginTop:100,
+    flex: 1,
+    height: Height / 2.1,
+    backgroundColor: '#181D3D',
+  },
+  appdName: {
+    flex: 1,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    backgroundColor: 'orange',
+    borderBottomLeftRadius: 100,
+  },
+  body: {
+    flex: 1,
+    height: Height / 1.5,
+    backgroundColor: 'orange'
+  },
+  formSection: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    backgroundColor: '#181D3D',
+    borderTopRightRadius: 100,
+    paddingHorizontal:10,
   },
   welcomeText: {
     color: 'black',
     fontSize: 24,
     fontFamily: 'System',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
   welcomeSubtitle: {
     color: 'black',
     marginTop: 10,
     marginBottom: 24,
   },
-  body: {
-    // paddingHorizontal: 15,
-  },
   forgotPassword: {
     width: '100%',
     alignItems: 'flex-end',
-    marginVertical: 20,
+    marginVertical: 10,
+    paddingHorizontal:10,
+  },
+  forgotPasswordText: {
+    fontSize: 13,
+    color: 'lightgray',
   },
   footer: {
     flexDirection: 'row',
     justifyContent: 'center',
-    margin: 10,
+    marginVertical: 10,
   },
-  footerText:{
+  footerText: {
     fontSize: 13,
-    color: 'black',
+    color: 'lightgray',
   },
   singUpLink: {
     fontWeight: 'bold',
+    color: 'white'
+  },
+  inputField:{
     color: 'white',
   },
-  LogoContainer:{
-    flex:1,
-    alignItems: 'center',
-    marginBottom:10
-  },
   signInButton: {
-    backgroundColor: 'black',
+    backgroundColor: 'white',
     borderWidth: 1,
     borderColor: 'white',
-    borderRadius: 15
+    borderRadius: 15,
+    color: 'black'
   },
   buttonContainer: {
     width: '100%',
     marginVertical: 10,
+    paddingHorizontal:10,
   },
-  googleButton:{
-    backgroundColor: 'black',
+  googleButton: {
+    backgroundColor: 'white',
     borderWidth: 1,
     borderColor: 'white',
     borderRadius: 30
-  }
+  },
 });
 
 export default styles;
