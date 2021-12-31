@@ -5,11 +5,11 @@ import LottieView from 'lottie-react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 const App = () => {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
-    }, 4000);
+    }, 2000);
   }, []);
   return (
     <SafeAreaProvider style={{ flex: 1}}>

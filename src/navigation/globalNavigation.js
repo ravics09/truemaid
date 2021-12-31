@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import 'react-native-gesture-handler';
 import {SafeAreaView, StatusBar} from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
+import {NavigationContainer, DefaultTheme} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -10,6 +10,13 @@ import SideDrawer from './sideDrawer';
 import Onboarding from './../screens/Onboarding/index';
 
 const Stack = createNativeStackNavigator();
+const MyTheme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    background: '#181D3D'
+  },
+};
 
 const SwitchNavigation = (isFirstTimeLaunch, user) => {
   switch (isFirstTimeLaunch) {
@@ -18,7 +25,7 @@ const SwitchNavigation = (isFirstTimeLaunch, user) => {
       break;
     case true:
       return (
-        <NavigationContainer>
+        <NavigationContainer theme={MyTheme}>
           <Stack.Navigator headerMode="none">
             <Stack.Screen
               name="Onboarding"
@@ -41,7 +48,7 @@ const SwitchNavigation = (isFirstTimeLaunch, user) => {
       break;
     case false:
       return (
-        <NavigationContainer>
+        <NavigationContainer theme={MyTheme}>
           {user ? (
             <Stack.Navigator headerMode="none">
               <Stack.Screen

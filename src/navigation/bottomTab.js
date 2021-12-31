@@ -13,19 +13,29 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 Ionicons.loadFont().then(); // To avoid 'Unrecognized font family ionicons' Warning
 
 const BottomTab = () => (
-  <BottomTabs.Navigator>
+  <BottomTabs.Navigator
+    screenOptions={{
+      headerShown: false,
+      tabBarActiveTintColor: 'white',
+      tabBarInactiveTintColor: '#808080',
+      tabBarActiveBackgroundColor: '#181D3D',
+      tabBarInactiveBackgroundColor: '#181D3D',
+      tabBarStyle: [
+        {
+          backgroundColor: '#181D3D'
+        },
+      ],
+    }}>
     <BottomTabs.Screen
       name="HomeTab"
       component={Home}
       options={{
-        headerShown: false,
         tabBarLabel: 'Home',
-        tabBarActiveTintColor: 'black',
         tabBarIcon: ({focused}) => (
           <Ionicons
             name="home"
             size={23}
-            color={focused ? 'black' : '#808080'}
+            color={focused ? 'white' : '#808080'}
           />
         ),
       }}
@@ -35,14 +45,12 @@ const BottomTab = () => (
       name="ListedTab"
       component={Listed}
       options={{
-        headerShown: false,
         tabBarLabel: 'Listed',
-        tabBarActiveTintColor: 'black',
         tabBarIcon: ({focused}) => (
           <Ionicons
             name="people-sharp"
             size={23}
-            color={focused ? 'black' : '#808080'}
+            color={focused ? 'white' : '#808080'}
           />
         ),
       }}
@@ -51,14 +59,12 @@ const BottomTab = () => (
       name="MessagesTab"
       component={Message}
       options={{
-        headerShown: false,
         tabBarLabel: 'Messages',
-        tabBarActiveTintColor: 'black',
         tabBarIcon: ({focused}) => (
           <Ionicons
             name="people-sharp"
             size={23}
-            color={focused ? 'black' : '#808080'}
+            color={focused ? 'white' : '#808080'}
           />
         ),
       }}
@@ -67,14 +73,12 @@ const BottomTab = () => (
       name="SettingTab"
       component={Setting}
       options={{
-        headerShown: false,
         tabBarLabel: 'Setting',
-        tabBarActiveTintColor: 'black',
         tabBarIcon: ({focused}) => (
           <Ionicons
             name="people-sharp"
             size={23}
-            color={focused ? 'black' : '#808080'}
+            color={focused ? 'white' : '#808080'}
           />
         ),
       }}
