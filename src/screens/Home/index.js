@@ -1,8 +1,10 @@
 import React, {useState, useEffect, Fragment} from 'react';
 import {Input, Avatar} from 'react-native-elements';
 import {View, Text, FlatList, Image, TouchableOpacity} from 'react-native';
+import NavigationString from './../../constant/navigationString';
+
 import styles from './styles';
-import * as FilterImage from './../../utils/constant';
+import * as FilterImage from './../../constant/imagePath';
 
 const pragati = require('./../../assets/images/algolia/women/pragati.png');
 const fanette = require('./../../assets/images/algolia/women/fanette.png');
@@ -403,7 +405,7 @@ const Home = () => {
 
   const renderVerticalList = ({item, index}) => {
     return (
-      <TouchableOpacity key={index} onPress={() => alert('Item pressed!')}>
+      <TouchableOpacity key={index} onPress={(item) => openMaidDetails(item)}>
         <View
           style={{
             flexDirection: 'row',
@@ -450,6 +452,10 @@ const Home = () => {
     setUserData(filteredData);
     setText(text);
   };
+
+  const openMaidDetails = (item) => {
+    // navigation.navigate(NavigationString.MAID_DETAIL);
+  }
 
   return (
     <Fragment>

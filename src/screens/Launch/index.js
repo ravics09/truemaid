@@ -6,7 +6,7 @@ import {
 } from 'react-native';
 import {Button} from 'react-native-elements';
 
-import * as OnboardingImage from './../../utils/constant';
+import * as OnboardingImage from './../../constant/imagePath';
 import styles from './styles';
 
 const Launch = ({navigation}) => {

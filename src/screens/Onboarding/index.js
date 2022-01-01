@@ -3,7 +3,7 @@ import {View, Text, Image, TouchableOpacity} from 'react-native';
 import Onboarding from 'react-native-onboarding-swiper';
 
 import styles from './styles';
-import * as OnboardingImage from './../../utils/constant';
+import * as OnboardingImage from './../../constant/imagePath';
 
 const Dot = ({selected}) => {
   let bgColor;
