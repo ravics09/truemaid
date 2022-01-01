@@ -8,6 +8,7 @@ import Home from './../screens/Home/index';
 import Listed from './../screens/Listed/index';
 import Message from './../screens/Message/index';
 import Setting from './../screens/Setting/index';
+import * as NavStack from './stackNavigation';
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
 Ionicons.loadFont().then(); // To avoid 'Unrecognized font family ionicons' Warning
@@ -43,7 +44,7 @@ const BottomTab = () => (
 
     <BottomTabs.Screen
       name="ListedTab"
-      component={Listed}
+      component={NavStack.ListedStack}
       options={{
         tabBarLabel: 'Listed',
         tabBarIcon: ({focused}) => (
@@ -57,7 +58,7 @@ const BottomTab = () => (
     />
     <BottomTabs.Screen
       name="MessagesTab"
-      component={Message}
+      component={NavStack.MessageStack}
       options={{
         tabBarLabel: 'Messages',
         tabBarIcon: ({focused}) => (
@@ -70,10 +71,10 @@ const BottomTab = () => (
       }}
     />
     <BottomTabs.Screen
-      name="SettingTab"
-      component={Setting}
+      name="ProfileTab"
+      component={NavStack.ProfileStack}
       options={{
-        tabBarLabel: 'Setting',
+        tabBarLabel: 'Profile',
         tabBarIcon: ({focused}) => (
           <Ionicons
             name="people-sharp"
@@ -85,4 +86,5 @@ const BottomTab = () => (
     />
   </BottomTabs.Navigator>
 );
+
 export default BottomTab;

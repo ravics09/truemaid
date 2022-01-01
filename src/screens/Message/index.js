@@ -1,10 +1,11 @@
 import React from 'react';
 import { View, Text, Button} from 'react-native';
 
-const Message = () => {
+const Message = ({navigation}) => {
     return(
         <View>
             <Text>This is Message screen</Text>
+            <Button onPress={()=>navigation.navigate('ChatScreen')} title="Message To"/>
         </View>
     )
 }

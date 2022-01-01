@@ -57,16 +57,16 @@ const Listed = ({navigation}) => {
 
   return (
     <View>
-      <Text style={{color: 'white'}}>This is Profile screen</Text>
-      {/* <Button onPress={()=>navigation.navigate('EditProfileScreen')} title="Edit Profile"/> */}
-      <FlatList
+      <Text style={{color: 'white'}}>This is Listed maid screen</Text>
+      <Button onPress={()=>navigation.navigate('MaidDetailScreen')} title="View Maid Details"/>
+      {/* <FlatList
         horizontal
         pagingEnabled={true}
         showsHorizontalScrollIndicator={false}
         data={data}
         keyExtractor={(item, index) => index}
         renderItem={item => renderMaidList(item)}
-      />
+      /> */}
     </View>
   );
 };
