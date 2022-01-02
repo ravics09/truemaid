@@ -6,11 +6,12 @@ const Drawer = createDrawerNavigator();
 
 import * as NavStack from './stackNavigation';
 import BottomTab from './bottomTab';
+import Home from './../screens/Home/index';
 
 const SideDrawer = () => (
   <Drawer.Navigator>
     <Drawer.Screen
-      name="True Maid"
+      name="BottomTab"
       component={BottomTab}
       options={{drawerLabel: 'True-Maid', headerShown: true}}
     />

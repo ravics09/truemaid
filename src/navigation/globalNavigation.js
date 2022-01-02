@@ -15,7 +15,7 @@ const MyTheme = {
   ...DefaultTheme,
   colors: {
     ...DefaultTheme.colors,
-    background: '#181D3D'
+    background: '#181D3D',
   },
 };
 
@@ -39,8 +39,8 @@ const SwitchNavigation = (isFirstTimeLaunch, user) => {
               options={{headerShown: false}}
             />
             <Stack.Screen
-              name="SideDrawer"
-              component={SideDrawer}
+              name="MainStack"
+              component={NavStack.MainStack}
               options={{headerShown: false}}
             />
           </Stack.Navigator>
@@ -52,11 +52,11 @@ const SwitchNavigation = (isFirstTimeLaunch, user) => {
         <NavigationContainer theme={MyTheme}>
           {user ? (
             <Stack.Navigator headerMode="none">
-              <Stack.Screen
-                name="SideDrawer"
-                component={SideDrawer}
-                options={{headerShown: false}}
-              />
+             <Stack.Screen
+              name="MainStack"
+              component={NavStack.MainStack}
+              options={{headerShown: false}}
+            />
             </Stack.Navigator>
           ) : (
             <Stack.Navigator headerMode="none">

@@ -36,7 +36,7 @@ const Profile = ({navigation}) => {
       </View>
       <ScrollView style={styles.footer}>
         <TouchableOpacity
-          onPress={() => navigation.navigate('EditProfileScreen')}
+          onPress={() => navigation.navigate('EditProfile')}
           style={styles.footerSection}>
           <Text style={styles.footerTitle}>My Profile </Text>
           <Text style={styles.footerSubTitle}>
@@ -44,7 +44,7 @@ const Profile = ({navigation}) => {
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => navigation.navigate('EditProfileScreen')}
+          onPress={() => navigation.navigate('EditProfile')}
           style={styles.footerSection}>
           <Text style={styles.footerTitle}>My Photo </Text>
           <Text style={styles.footerSubTitle}>
@@ -52,7 +52,7 @@ const Profile = ({navigation}) => {
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => navigation.navigate('EditProfileScreen')}
+          onPress={() => navigation.navigate('EditProfile')}
           style={styles.footerSection}>
           <Text style={styles.footerTitle}>My Addresses </Text>
           <Text style={styles.footerSubTitle}>
@@ -60,7 +60,7 @@ const Profile = ({navigation}) => {
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => navigation.navigate('EditProfileScreen')}
+          onPress={() => navigation.navigate('EditProfile')}
           style={styles.footerSection}>
           <Text style={styles.footerTitle}>My Wallet </Text>
           <Text style={styles.footerSubTitle}>
@@ -68,7 +68,7 @@ const Profile = ({navigation}) => {
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => navigation.navigate('EditProfileScreen')}
+          onPress={() => navigation.navigate('EditProfile')}
           style={styles.footerSection}>
           <Text style={styles.footerTitle}>Refer and Earn </Text>
           <Text style={styles.footerSubTitle}>

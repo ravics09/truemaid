@@ -5,7 +5,7 @@ const Message = ({navigation}) => {
     return(
         <View>
             <Text>This is Message screen</Text>
-            <Button onPress={()=>navigation.navigate('ChatScreen')} title="Message To"/>
+            <Button onPress={()=>navigation.navigate('Chat')} title="Message To"/>
         </View>
     )
 }

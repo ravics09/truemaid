@@ -19,7 +19,7 @@ const SignIn = ({navigation}) => {
   const onSubmitHandler = () => {
     setIsSubmit(true);
     setTimeout(() => {
-      navigation.replace('SideDrawer');
+      navigation.replace('MainStack');
     }, 2000);
   };
   return (

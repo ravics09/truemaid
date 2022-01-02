@@ -2,12 +2,12 @@ import React, {useState, useEffect} from 'react';
 import {View, Text, Button, FlatList} from 'react-native';
 
 const MaidDetail = ({navigation, route}) => {
-  const aData = route.params.maidDetails;
-  const [maidData, setMaidData] = useState();
+  // const aData = route.params.maidDetails;
+  // const [maidData, setMaidData] = useState();
 
-  useEffect(() => {
-    setMaidData(aData);
-  }, []);
+  // useEffect(() => {
+  //   setMaidData(aData);
+  // }, []);
 
   const renderMaidDeatils = ({item, index}) => {
     <View key={index} style={{flex: 1}}>
@@ -20,13 +20,13 @@ const MaidDetail = ({navigation, route}) => {
   return (
     <View>
       <Text style={{color: 'white'}}>Maid deatils sreen</Text>
-      <FlatList
+      {/* <FlatList
         pagingEnabled={true}
         showsHorizontalScrollIndicator={false}
         data={maidData}
         keyExtractor={(item, index) => index}
         renderItem={(item, index) => renderMaidDeatils(item, index)}
-      />
+      /> */}
     </View>
   );
 };

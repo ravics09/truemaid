@@ -455,7 +455,7 @@ const Home = ({navigation}) => {
   };
 
   const openMaidDetails = (item) => {
-    navigation.navigate('MaidDetailScreen',{maidDetails: item});
+    navigation.navigate('MaidDetail',{maidDetails: item});
   }
 
   return (

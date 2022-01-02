@@ -21,6 +21,8 @@ import {
   Chat,
 } from './../screens';
 
+import BottomTab from './bottomTab';
+
 const Stack = createNativeStackNavigator();
 
 const AuthStack = () => (
@@ -43,33 +45,39 @@ const AuthStack = () => (
   </Stack.Navigator>
 );
 
-const MainStack = ({navigation}) => (
+const MainStack = () => (
+  <Stack.Navigator screenOptions={{headerShown: false}}>
+    <Stack.Screen name="BottomTab" component={BottomTab} />
+  </Stack.Navigator>
+);
+
+const HomeStack = ({navigation}) => (
   <Stack.Navigator
-    initialRouteName="HomeScreen"
+    initialRouteName="TrueMaid"
     screenOptions={{
+      title: 'True Maid',
+      headerShown: true,
       headerStyle: {backgroundColor: 'white'},
       headerTintColor: 'black',
       headerTitleStyle: {fontWeight: 'bold'},
       headerBackTitle: 'back',
     }}>
     <Stack.Screen
-      name="HomeScreen"
+      name="TrueMaid"
       component={Home}
-      options={{headerShown: false}}
     />
     <Stack.Screen
-      name="MaidDetailScreen"
+      name="MaidDetail"
       component={MaidDetail}
       options={() => ({
         title: 'Maid Details',
-        headerShown: true,
         headerLeft: () => (
           <TouchableOpacity style={{paddingLeft: 20}}>
             <Ionicons
               name="arrow-back"
               size={25}
               style={[{color: 'black'}]}
-              onPress={() => navigation.navigate('HomeScreen')}
+              onPress={() => navigation.navigate('TrueMaid')}
             />
           </TouchableOpacity>
         ),
@@ -80,44 +88,28 @@ const MainStack = ({navigation}) => (
 
 const ProfileStack = ({navigation}) => (
   <Stack.Navigator
-    initialRouteName="ProfileScreen"
+    initialRouteName="Profile"
     screenOptions={{
+      title: 'True Maid',
+      headerShown: true,
       headerStyle: {backgroundColor: 'white'},
       headerTintColor: 'black',
       headerTitleStyle: {fontWeight: 'bold'},
       headerBackTitle: 'back',
     }}>
+    <Stack.Screen name="Profile" component={Profile} />
     <Stack.Screen
-      name="ProfileScreen"
-      component={Profile}
-      options={() => ({
-        title: 'Profile',
-        headerShown: false,
-        headerLeft: () => (
-          <TouchableOpacity style={{paddingLeft: 20}}>
-            <Ionicons
-              name="arrow-back"
-              size={25}
-              style={[{color: 'black'}]}
-              onPress={() => navigation.goBack()}
-            />
-          </TouchableOpacity>
-        ),
-      })}
-    />
-    <Stack.Screen
-      name="EditProfileScreen"
+      name="EditProfile"
       component={EditProfile}
       options={() => ({
         title: 'Edit Profile',
-        headerShown: true,
         headerLeft: () => (
           <TouchableOpacity style={{paddingLeft: 20}}>
             <Ionicons
               name="arrow-back"
               size={25}
               style={[{color: 'black'}]}
-              onPress={() => navigation.navigate('ProfileScreen')}
+              onPress={() => navigation.navigate('Profile')}
             />
           </TouchableOpacity>
         ),
@@ -128,44 +120,28 @@ const ProfileStack = ({navigation}) => (
 
 const ListedStack = ({navigation}) => (
   <Stack.Navigator
-    initialRouteName="ListedScreen"
+    initialRouteName="Listed"
     screenOptions={{
+      title: 'True Maid',
+      headerShown: true,
       headerStyle: {backgroundColor: 'white'},
       headerTintColor: 'black',
       headerTitleStyle: {fontWeight: 'bold'},
       headerBackTitle: 'back',
     }}>
+    <Stack.Screen name="Listed" component={Listed} />
     <Stack.Screen
-      name="ListedScreen"
-      component={Listed}
-      options={() => ({
-        headerShown: false,
-        title: 'Listed',
-        headerLeft: () => (
-          <TouchableOpacity style={{paddingLeft: 20}}>
-            <Ionicons
-              name="arrow-back"
-              size={25}
-              style={[{color: 'black'}]}
-              onPress={() => navigation.goBack()}
-            />
-          </TouchableOpacity>
-        ),
-      })}
-    />
-    <Stack.Screen
-      name="MaidDetailScreen"
+      name="MaidDetail"
       component={MaidDetail}
       options={() => ({
-        headerShown: true,
-        title: 'MaidDetail',
+        title: 'Maid Detail',
         headerLeft: () => (
           <TouchableOpacity style={{paddingLeft: 20}}>
             <Ionicons
               name="arrow-back"
               size={25}
               style={[{color: 'black'}]}
-              onPress={() => navigation.navigate('ListedScreen')}
+              onPress={() => navigation.navigate('Listed')}
             />
           </TouchableOpacity>
         ),
@@ -176,36 +152,20 @@ const ListedStack = ({navigation}) => (
 
 const MessageStack = ({navigation}) => (
   <Stack.Navigator
-    initialRouteName="MessageScreen"
+    initialRouteName="Messages"
     screenOptions={{
+      title: 'True Maid',
+      headerShown: true,
       headerStyle: {backgroundColor: 'white'},
       headerTintColor: 'black',
       headerTitleStyle: {fontWeight: 'bold'},
       headerBackTitle: 'back',
     }}>
+    <Stack.Screen name="Messages" component={Message} />
     <Stack.Screen
-      name="MessageScreen"
-      component={Message}
-      options={() => ({
-        headerShown: false,
-        title: 'Messages',
-        headerLeft: () => (
-          <TouchableOpacity style={{paddingLeft: 20}}>
-            <Ionicons
-              name="arrow-back"
-              size={25}
-              style={[{color: 'black'}]}
-              onPress={() => navigation.goBack()}
-            />
-          </TouchableOpacity>
-        ),
-      })}
-    />
-    <Stack.Screen
-      name="ChatScreen"
+      name="Chat"
       component={Chat}
       options={() => ({
-        headerShown: true,
         title: 'Chat',
         headerLeft: () => (
           <TouchableOpacity style={{paddingLeft: 20}}>
@@ -213,37 +173,7 @@ const MessageStack = ({navigation}) => (
               name="arrow-back"
               size={25}
               style={[{color: 'black'}]}
-              onPress={() => navigation.navigate('MessageScreen')}
-            />
-          </TouchableOpacity>
-        ),
-      })}
-    />
-  </Stack.Navigator>
-);
-
-const MaidDetailsScreen = ({navigation}) => (
-  <Stack.Navigator
-    initialRouteName="MaidDetailScreen"
-    screenOptions={{
-      headerStyle: {backgroundColor: 'white'},
-      headerTintColor: 'black',
-      headerTitleStyle: {fontWeight: 'bold'},
-      headerBackTitle: 'back',
-    }}>
-    <Stack.Screen
-      name="MaidDetailScreen"
-      component={MaidDetail}
-      options={() => ({
-        headerShown: false,
-        title: 'Maid Detail',
-        headerLeft: () => (
-          <TouchableOpacity style={{paddingLeft: 20}}>
-            <Ionicons
-              name="arrow-back"
-              size={25}
-              style={[{color: 'black'}]}
-              onPress={() => navigation.goBack()}
+              onPress={() => navigation.navigate('Messages')}
             />
           </TouchableOpacity>
         ),
@@ -288,6 +218,6 @@ export {
   ListedStack,
   MessageStack,
   MainStack,
-  MaidDetailsScreen,
-  SettingStack
+  SettingStack,
+  HomeStack,
 };
