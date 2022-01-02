@@ -1,27 +1,25 @@
 import React from 'react';
 import 'react-native-gesture-handler';
 import {TouchableOpacity} from 'react-native';
-import {DrawerActions} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 Ionicons.loadFont().then(); // To avoid 'Unrecognized font family ionicons' Warning
 import NavigationString from './../constant/navigationString';
 
 import {
-  Home,
   SignIn,
   SignUp,
   Launch,
   Profile,
   EditProfile,
   Listed,
-  Setting,
   MaidDetail,
   Message,
   Chat,
 } from './../screens';
 
 import BottomTab from './bottomTab';
+import SideDrawer from './sideDrawer';
 
 const Stack = createNativeStackNavigator();
 
@@ -52,19 +50,13 @@ const MainStack = () => (
 );
 
 const HomeStack = ({navigation}) => (
-  <Stack.Navigator
-    initialRouteName="TrueMaid"
-    screenOptions={{
-      title: 'True Maid',
-      headerShown: true,
-      headerStyle: {backgroundColor: 'white'},
-      headerTintColor: 'black',
-      headerTitleStyle: {fontWeight: 'bold'},
-      headerBackTitle: 'back',
-    }}>
+  <Stack.Navigator initialRouteName="Home">
     <Stack.Screen
-      name="TrueMaid"
-      component={Home}
+      name="Home"
+      component={SideDrawer}
+      options={() => ({
+        headerShown: false,
+      })}
     />
     <Stack.Screen
       name="MaidDetail"
@@ -77,7 +69,7 @@ const HomeStack = ({navigation}) => (
               name="arrow-back"
               size={25}
               style={[{color: 'black'}]}
-              onPress={() => navigation.navigate('TrueMaid')}
+              onPress={() => navigation.navigate('Home')}
             />
           </TouchableOpacity>
         ),
@@ -182,42 +174,11 @@ const MessageStack = ({navigation}) => (
   </Stack.Navigator>
 );
 
-const SettingStack = ({navigation}) => (
-  <Stack.Navigator
-    initialRouteName="SettingScreen"
-    screenOptions={{
-      headerStyle: {backgroundColor: 'white'},
-      headerTintColor: 'black',
-      headerTitleStyle: {fontWeight: 'bold'},
-      headerBackTitle: 'back',
-    }}>
-    <Stack.Screen
-      name="SettingScreen"
-      component={Setting}
-      options={() => ({
-        headerShown: false,
-        title: 'Setting',
-        headerLeft: () => (
-          <TouchableOpacity style={{paddingLeft: 20}}>
-            <Ionicons
-              name="arrow-back"
-              size={25}
-              style={[{color: 'black'}]}
-              onPress={() => navigation.goBack()}
-            />
-          </TouchableOpacity>
-        ),
-      })}
-    />
-  </Stack.Navigator>
-);
-
 export {
   AuthStack,
   ProfileStack,
   ListedStack,
   MessageStack,
   MainStack,
-  SettingStack,
   HomeStack,
 };

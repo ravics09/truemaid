@@ -1,24 +1,90 @@
 import React from 'react';
 import 'react-native-gesture-handler';
-
+import {TouchableOpacity} from 'react-native';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 const Drawer = createDrawerNavigator();
 
-import * as NavStack from './stackNavigation';
-import BottomTab from './bottomTab';
-import Home from './../screens/Home/index';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+Ionicons.loadFont().then();
 
-const SideDrawer = () => (
+import {AboutUs, Privacy, Home, Setting} from './../screens';
+
+const SideDrawer = ({navigation}) => (
   <Drawer.Navigator>
     <Drawer.Screen
-      name="BottomTab"
-      component={BottomTab}
-      options={{drawerLabel: 'True-Maid', headerShown: true}}
+      name="True Maid"
+      component={Home}
+      options={() => ({
+        drawerLabel: 'True Maid',
+        headerShown: true,
+        headerRight: () => (
+          <TouchableOpacity style={{paddingLeft: 20}}>
+            <Ionicons
+              name="notifications"
+              size={25}
+              style={[{color: 'black', paddingRight: 15}]}
+              onPress={() => alert('no notification as of now')}
+            />
+          </TouchableOpacity>
+        ),
+      })}
     />
-     <Drawer.Screen
+    <Drawer.Screen
+      name="AboutUs"
+      component={AboutUs}
+      options={{
+        drawerLabel: 'About Us',
+        headerShown: true,
+        title: 'About Us',
+        headerLeft: () => (
+          <TouchableOpacity style={{paddingLeft: 20}}>
+            <Ionicons
+              name="arrow-back"
+              size={25}
+              style={[{color: 'black'}]}
+              onPress={() => navigation.goBack()}
+            />
+          </TouchableOpacity>
+        ),
+      }}
+    />
+    <Drawer.Screen
+      name="Privacy"
+      component={Privacy}
+      options={{
+        drawerLabel: 'Privacy',
+        headerShown: true,
+        title: 'Privacy',
+        headerLeft: () => (
+          <TouchableOpacity style={{paddingLeft: 20}}>
+            <Ionicons
+              name="arrow-back"
+              size={25}
+              style={[{color: 'black'}]}
+              onPress={() => navigation.goBack()}
+            />
+          </TouchableOpacity>
+        ),
+      }}
+    />
+    <Drawer.Screen
       name="Setting"
-      component={NavStack.SettingStack}
-      options={{drawerLabel: 'Settings', headerShown: true}}
+      component={Setting}
+      options={{
+        drawerLabel: 'Setting',
+        headerShown: true,
+        title: 'Setting',
+        headerLeft: () => (
+          <TouchableOpacity style={{paddingLeft: 20}}>
+            <Ionicons
+              name="arrow-back"
+              size={25}
+              style={[{color: 'black'}]}
+              onPress={() => navigation.goBack()}
+            />
+          </TouchableOpacity>
+        ),
+      }}
     />
   </Drawer.Navigator>
 );

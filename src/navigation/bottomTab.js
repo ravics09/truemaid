@@ -5,7 +5,6 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import { DrawerActions} from '@react-navigation/native';
 const BottomTabs = createBottomTabNavigator();
 
-import Home from './../screens/Home/index';
 import * as NavStack from './stackNavigation';
 import SideDrawer from './sideDrawer';
 
@@ -15,7 +14,10 @@ Ionicons.loadFont().then(); // To avoid 'Unrecognized font family ionicons' Warn
 import FoundationIcon from 'react-native-vector-icons/Foundation';
 FoundationIcon.loadFont().then(); // To avoid 'Unrecognized font family ionicons' Warning
 
-const BottomTab = () => (
+import EntypoIcon from 'react-native-vector-icons/Entypo';
+EntypoIcon.loadFont().then(); 
+
+const BottomTab = ({navigation}) => (
   <BottomTabs.Navigator
     screenOptions={{
       headerShown: false,
@@ -50,8 +52,8 @@ const BottomTab = () => (
       options={{
         tabBarLabel: 'Listed',
         tabBarIcon: ({focused}) => (
-          <Ionicons
-            name="people-sharp"
+          <EntypoIcon
+            name="add-to-list"
             size={23}
             color={focused ? 'white' : '#808080'}
           />
@@ -64,8 +66,8 @@ const BottomTab = () => (
       options={{
         tabBarLabel: 'Messages',
         tabBarIcon: ({focused}) => (
-          <Ionicons
-            name="people-sharp"
+          <EntypoIcon
+            name="chat"
             size={23}
             color={focused ? 'white' : '#808080'}
           />
@@ -78,28 +80,8 @@ const BottomTab = () => (
       options={{
         tabBarLabel: 'Profile',
         tabBarIcon: ({focused}) => (
-          <Ionicons
-            name="people-sharp"
-            size={23}
-            color={focused ? 'white' : '#808080'}
-          />
-        ),
-      }}
-    />
-    <BottomTabs.Screen
-      name="MoreStack"
-      component={SideDrawer}
-      listeners={({navigation})=>({
-        tabPress: (e) => {
-          e.preventDefault();
-          navigation.dispatch(DrawerActions.openDrawer());
-        }
-      })}
-      options={{
-        tabBarLabel: 'More',
-        tabBarIcon: ({focused}) => (
-          <FoundationIcon
-            name="indent-more"
+          <EntypoIcon
+            name="user"
             size={23}
             color={focused ? 'white' : '#808080'}
           />

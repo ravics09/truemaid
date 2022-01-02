@@ -9,3 +9,5 @@ export {default as MaidDetail} from './MaidDetail/index';
 export {default as Listed} from './Listed/index';
 export {default as Message} from './Message/index';
 export {default as Chat} from './Chat/index';
+export {default as AboutUs} from './About/index';
+export {default as Privacy} from './Privacy/index';
