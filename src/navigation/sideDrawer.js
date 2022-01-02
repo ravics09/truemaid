@@ -7,7 +7,7 @@ const Drawer = createDrawerNavigator();
 import Ionicons from 'react-native-vector-icons/Ionicons';
 Ionicons.loadFont().then();
 
-import {AboutUs, Privacy, Home, Setting} from './../screens';
+import {AboutUs, Privacy, Home, Setting, Notification} from './../screens';
 
 const SideDrawer = ({navigation}) => (
   <Drawer.Navigator>
@@ -23,7 +23,7 @@ const SideDrawer = ({navigation}) => (
               name="notifications"
               size={25}
               style={[{color: 'black', paddingRight: 15}]}
-              onPress={() => alert('no notification as of now')}
+              onPress={() => navigation.navigate('Notification')}
             />
           </TouchableOpacity>
         ),
@@ -66,6 +66,25 @@ const SideDrawer = ({navigation}) => (
           </TouchableOpacity>
         ),
       }}
+    />
+    <Drawer.Screen
+      name="Notification"
+      component={Notification}
+      options={() => ({
+        title: 'Notification',
+        drawerItemStyle: { display: "none" },
+        headerShown: true,
+        headerLeft: () => (
+          <TouchableOpacity style={{paddingLeft: 20}}>
+            <Ionicons
+              name="arrow-back"
+              size={25}
+              style={[{color: 'black', paddingRight: 15}]}
+              onPress={() => navigation.goBack()}
+            />
+          </TouchableOpacity>
+        ),
+      })}
     />
     <Drawer.Screen
       name="Setting"
