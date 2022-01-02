@@ -5,9 +5,6 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 const BottomTabs = createBottomTabNavigator();
 
 import Home from './../screens/Home/index';
-import Listed from './../screens/Listed/index';
-import Message from './../screens/Message/index';
-import Setting from './../screens/Setting/index';
 import * as NavStack from './stackNavigation';
 
 import Ionicons from 'react-native-vector-icons/Ionicons';

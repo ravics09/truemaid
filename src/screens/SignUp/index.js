@@ -7,7 +7,6 @@ import {
   ScrollView,
 } from 'react-native';
 import {Input, Icon, Button} from 'react-native-elements';
-import LinearGradient from 'react-native-linear-gradient';
 import * as OnboardingImage from './../../constant/imagePath';
 
 import styles from './styles';

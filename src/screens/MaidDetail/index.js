@@ -1,8 +1,13 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {View, Text, Button, FlatList} from 'react-native';
 
 const MaidDetail = ({navigation, route}) => {
-//   const {maidDetail} = route.params;
+  const aData = route.params.maidDetails;
+  const [maidData, setMaidData] = useState();
+
+  useEffect(() => {
+    setMaidData(aData);
+  }, []);
 
   const renderMaidDeatils = ({item, index}) => {
     <View key={index} style={{flex: 1}}>
@@ -14,15 +19,14 @@ const MaidDetail = ({navigation, route}) => {
 
   return (
     <View>
-        <Text>Maid deatils sreen</Text>
-      {/* <Text>{maidDetail.username}</Text>
+      <Text style={{color: 'white'}}>Maid deatils sreen</Text>
       <FlatList
         pagingEnabled={true}
         showsHorizontalScrollIndicator={false}
-        data={maidDetail}
+        data={maidData}
         keyExtractor={(item, index) => index}
         renderItem={(item, index) => renderMaidDeatils(item, index)}
-      /> */}
+      />
     </View>
   );
 };

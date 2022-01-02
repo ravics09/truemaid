@@ -8,6 +8,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as NavStack from './stackNavigation';
 import SideDrawer from './sideDrawer';
 import Onboarding from './../screens/Onboarding/index';
+import BottomTabs from './bottomTab';
 
 const Stack = createNativeStackNavigator();
 const MyTheme = {

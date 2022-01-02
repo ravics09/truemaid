@@ -7,7 +7,6 @@ import {
   ScrollView,
 } from 'react-native';
 import {Input, Icon, Button} from 'react-native-elements';
-import LinearGradient from 'react-native-linear-gradient';
 import * as OnboardingImage from './../../constant/imagePath';
 
 import styles from './styles';
@@ -19,7 +18,9 @@ const SignIn = ({navigation}) => {
 
   const onSubmitHandler = () => {
     setIsSubmit(true);
-    setTimeout(()=>{navigation.replace('SideDrawer')},2000);
+    setTimeout(() => {
+      navigation.replace('SideDrawer');
+    }, 2000);
   };
   return (
     <ScrollView style={{flex: 1}}>
@@ -33,7 +34,11 @@ const SignIn = ({navigation}) => {
       </View>
       <View style={styles.body}>
         <View style={styles.formSection}>
-          <Input placeholder="Username" onChangeText={setUsername} style={styles.inputField}/>
+          <Input
+            placeholder="Username"
+            onChangeText={setUsername}
+            style={styles.inputField}
+          />
           <Input
             placeholder="Password"
             secureTextEntry={true}
@@ -43,7 +48,9 @@ const SignIn = ({navigation}) => {
           <View style={styles.forgotPassword}>
             <TouchableOpacity
               onPress={() => alert('You forget your password how?')}>
-              <Text style={styles.forgotPasswordText}>Forgot your password?</Text>
+              <Text style={styles.forgotPasswordText}>
+                Forgot your password?
+              </Text>
             </TouchableOpacity>
           </View>
           <Button
@@ -51,7 +58,7 @@ const SignIn = ({navigation}) => {
             loading={isSubmit}
             buttonStyle={styles.signInButton}
             containerStyle={styles.buttonContainer}
-            titleStyle={{fontWeight: 'bold', color: 'black',}}
+            titleStyle={{fontWeight: 'bold', color: 'black'}}
             onPress={() => onSubmitHandler()}
           />
           <Button

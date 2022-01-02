@@ -14,10 +14,10 @@ const SideDrawer = () => (
       component={BottomTab}
       options={{drawerLabel: 'True-Maid', headerShown: true}}
     />
-    <Drawer.Screen
-      name="Profile"
-      component={NavStack.ProfileStack}
-      options={{drawerLabel: 'Profile', headerShown: false}}
+     <Drawer.Screen
+      name="Setting"
+      component={NavStack.SettingStack}
+      options={{drawerLabel: 'Settings', headerShown: true}}
     />
   </Drawer.Navigator>
 );

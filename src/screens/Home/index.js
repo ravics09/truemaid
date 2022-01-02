@@ -6,6 +6,7 @@ import NavigationString from './../../constant/navigationString';
 import styles from './styles';
 import * as FilterImage from './../../constant/imagePath';
 
+
 const pragati = require('./../../assets/images/algolia/women/pragati.png');
 const fanette = require('./../../assets/images/algolia/women/fanette.png');
 const lucas = require('./../../assets/images/algolia/men/lucas.png');
@@ -373,7 +374,7 @@ const userDataa = [
   },
 ];
 
-const Home = () => {
+const Home = ({navigation}) => {
   const [text, setText] = useState('');
   const [data, setData] = useState([]);
   const [userData, setUserData] = useState([]);
@@ -454,7 +455,7 @@ const Home = () => {
   };
 
   const openMaidDetails = (item) => {
-    // navigation.navigate(NavigationString.MAID_DETAIL);
+    navigation.navigate('MaidDetailScreen',{maidDetails: item});
   }
 
   return (

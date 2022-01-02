@@ -18,7 +18,7 @@ import {
   Setting,
   MaidDetail,
   Message,
-  Chat
+  Chat,
 } from './../screens';
 
 const Stack = createNativeStackNavigator();
@@ -43,20 +43,40 @@ const AuthStack = () => (
   </Stack.Navigator>
 );
 
-// const MainStack = () => {
-//   <Stack.Navigator>
-//     <Stack.Screen
-//       name={NavigationString.HOME}
-//       component={SideDrawer}
-//       options={{headerShown: false}}
-//     />
-//     <Stack.Screen
-//       name={NavigationString.MAID_DETAIL}
-//       component={MaidDetail}
-//       options={{headerShown: false}}
-//     />
-//   </Stack.Navigator>;
-// };
+const MainStack = ({navigation}) => (
+  <Stack.Navigator
+    initialRouteName="HomeScreen"
+    screenOptions={{
+      headerStyle: {backgroundColor: 'white'},
+      headerTintColor: 'black',
+      headerTitleStyle: {fontWeight: 'bold'},
+      headerBackTitle: 'back',
+    }}>
+    <Stack.Screen
+      name="HomeScreen"
+      component={Home}
+      options={{headerShown: false}}
+    />
+    <Stack.Screen
+      name="MaidDetailScreen"
+      component={MaidDetail}
+      options={() => ({
+        title: 'Maid Details',
+        headerShown: true,
+        headerLeft: () => (
+          <TouchableOpacity style={{paddingLeft: 20}}>
+            <Ionicons
+              name="arrow-back"
+              size={25}
+              style={[{color: 'black'}]}
+              onPress={() => navigation.navigate('HomeScreen')}
+            />
+          </TouchableOpacity>
+        ),
+      })}
+    />
+  </Stack.Navigator>
+);
 
 const ProfileStack = ({navigation}) => (
   <Stack.Navigator
@@ -79,9 +99,7 @@ const ProfileStack = ({navigation}) => (
               name="arrow-back"
               size={25}
               style={[{color: 'black'}]}
-              onPress={() =>
-                navigation.goBack()
-              }
+              onPress={() => navigation.goBack()}
             />
           </TouchableOpacity>
         ),
@@ -99,9 +117,7 @@ const ProfileStack = ({navigation}) => (
               name="arrow-back"
               size={25}
               style={[{color: 'black'}]}
-              onPress={() =>
-                navigation.navigate('ProfileScreen') 
-              }
+              onPress={() => navigation.navigate('ProfileScreen')}
             />
           </TouchableOpacity>
         ),
@@ -141,7 +157,7 @@ const ListedStack = ({navigation}) => (
       name="MaidDetailScreen"
       component={MaidDetail}
       options={() => ({
-        headerShown:  true,
+        headerShown: true,
         title: 'MaidDetail',
         headerLeft: () => (
           <TouchableOpacity style={{paddingLeft: 20}}>
@@ -158,7 +174,7 @@ const ListedStack = ({navigation}) => (
   </Stack.Navigator>
 );
 
-const MessageStack  = ({navigation}) => (
+const MessageStack = ({navigation}) => (
   <Stack.Navigator
     initialRouteName="MessageScreen"
     screenOptions={{
@@ -189,7 +205,7 @@ const MessageStack  = ({navigation}) => (
       name="ChatScreen"
       component={Chat}
       options={() => ({
-        headerShown:  true,
+        headerShown: true,
         title: 'Chat',
         headerLeft: () => (
           <TouchableOpacity style={{paddingLeft: 20}}>
@@ -204,6 +220,74 @@ const MessageStack  = ({navigation}) => (
       })}
     />
   </Stack.Navigator>
-)
+);
 
-export {AuthStack, ProfileStack, ListedStack, MessageStack};
+const MaidDetailsScreen = ({navigation}) => (
+  <Stack.Navigator
+    initialRouteName="MaidDetailScreen"
+    screenOptions={{
+      headerStyle: {backgroundColor: 'white'},
+      headerTintColor: 'black',
+      headerTitleStyle: {fontWeight: 'bold'},
+      headerBackTitle: 'back',
+    }}>
+    <Stack.Screen
+      name="MaidDetailScreen"
+      component={MaidDetail}
+      options={() => ({
+        headerShown: false,
+        title: 'Maid Detail',
+        headerLeft: () => (
+          <TouchableOpacity style={{paddingLeft: 20}}>
+            <Ionicons
+              name="arrow-back"
+              size={25}
+              style={[{color: 'black'}]}
+              onPress={() => navigation.goBack()}
+            />
+          </TouchableOpacity>
+        ),
+      })}
+    />
+  </Stack.Navigator>
+);
+
+const SettingStack = ({navigation}) => (
+  <Stack.Navigator
+    initialRouteName="SettingScreen"
+    screenOptions={{
+      headerStyle: {backgroundColor: 'white'},
+      headerTintColor: 'black',
+      headerTitleStyle: {fontWeight: 'bold'},
+      headerBackTitle: 'back',
+    }}>
+    <Stack.Screen
+      name="SettingScreen"
+      component={Setting}
+      options={() => ({
+        headerShown: false,
+        title: 'Setting',
+        headerLeft: () => (
+          <TouchableOpacity style={{paddingLeft: 20}}>
+            <Ionicons
+              name="arrow-back"
+              size={25}
+              style={[{color: 'black'}]}
+              onPress={() => navigation.goBack()}
+            />
+          </TouchableOpacity>
+        ),
+      })}
+    />
+  </Stack.Navigator>
+);
+
+export {
+  AuthStack,
+  ProfileStack,
+  ListedStack,
+  MessageStack,
+  MainStack,
+  MaidDetailsScreen,
+  SettingStack
+};
