@@ -1,13 +1,13 @@
-import OnboardingImg1 from './../assets/images/onboarding/onboardingImg1.png';
-import OnboardingImg2 from './../assets/images/onboarding/onboardingImg2.png';
-import ChildCareImg from './../assets/images/onboarding/childcareImg.png';
-import OldCareImg from './../assets/images/onboarding/oldcareImg.png';
+const OnboardingImg1  = require('./../assets/images/onboarding/onboardingImg1.png');
+const OnboardingImg2 = require('./../assets/images/onboarding/onboardingImg2.png');
+const ChildCareImg = require('./../assets/images/onboarding/childcareImg.png');
+const OldCareImg = require('./../assets/images/onboarding/oldcareImg.png');
 
-import Childcare from './../assets/images/filterImages/childcare.png';
-import Cooking from './../assets/images/filterImages/cooking.png';
-import Elderlycare from './../assets/images/filterImages/elderlycare.png';
-import Gardener from './../assets/images/filterImages/gardener.png';
-import HouseMaid from './../assets/images/filterImages/maid.png';
+const Childcare = require('./../assets/images/filterImages/childcare.png');
+const  Cooking = require('./../assets/images/filterImages/cooking.png');
+const Elderlycare = require('./../assets/images/filterImages/elderlycare.png');
+const Gardener = require('./../assets/images/filterImages/gardener.png');
+const HouseMaid =  require('./../assets/images/filterImages/maid.png');
 
 export {
     OnboardingImg1,

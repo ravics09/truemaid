@@ -17,14 +17,14 @@ const maidData = [
     key: '1',
     name: 'House Maids',
     salary: '15000',
-    uri: `${FilterImage.HouseMaid}`,
+    uri: FilterImage.HouseMaid,
     filterName: 'housemaid',
   },
   {
     key: '2',
     name: 'Kitchen Staff',
     salary: '20000',
-    uri: `${FilterImage.Cooking}`,
+    uri: FilterImage.Cooking,
     filterName: 'cook',
   },
 
@@ -32,21 +32,21 @@ const maidData = [
     key: '3',
     name: 'Baby Sitters',
     salary: '12000',
-    uri: `${FilterImage.Childcare}`,
+    uri: FilterImage.Childcare,
     filterName: 'childcare',
   },
   {
     key: '4',
     name: 'Elderly Care',
     salary: '9000',
-    uri: `${FilterImage.Elderlycare}`,
+    uri: FilterImage.Elderlycare,
     filterName: 'elderlycare',
   },
   {
     key: '5',
     name: 'Gardener',
     salary: '10500',
-    uri: `${FilterImage.Gardener}`,
+    uri: FilterImage.Gardener,
     filterName: 'gardener',
   },
 ];
@@ -70,7 +70,7 @@ const userDataa = [
     first_name: 'melissa',
     last_name: 'fleming',
     title: 'miss',
-    picture: `${pragati}`,
+    picture: pragati,
   },
   {
     email: 'christoffer.christiansen@example.com',
@@ -90,7 +90,7 @@ const userDataa = [
     first_name: 'christoffer',
     last_name: 'christiansen',
     title: 'mr',
-    picture: `${fanette}`,
+    picture: fanette,
   },
   {
     email: 'christoffer.christiansen@example.com',
@@ -110,7 +110,7 @@ const userDataa = [
     first_name: 'Lucas',
     last_name: 'christiansen',
     title: 'mr',
-    picture: `${lucas}`,
+    picture:lucas,
   },
   {
     email: 'christoffer.christiansen@example.com',
@@ -130,7 +130,7 @@ const userDataa = [
     first_name: 'Alexs',
     last_name: 'christiansen',
     title: 'mr',
-    picture: `${alexs}`,
+    picture: alexs
   },
   {
     email: 'melissa.fleming@example.com',
@@ -150,7 +150,7 @@ const userDataa = [
     first_name: 'melissa',
     last_name: 'fleming',
     title: 'miss',
-    picture: `${pragati}`,
+    picture: pragati
   },
   {
     email: 'christoffer.christiansen@example.com',
@@ -170,7 +170,7 @@ const userDataa = [
     first_name: 'christoffer',
     last_name: 'christiansen',
     title: 'mr',
-    picture: `${fanette}`,
+    picture: fanette
   },
   {
     email: 'christoffer.christiansen@example.com',
@@ -190,7 +190,7 @@ const userDataa = [
     first_name: 'Lucas',
     last_name: 'christiansen',
     title: 'mr',
-    picture: `${lucas}`,
+    picture: lucas
   },
   {
     email: 'christoffer.christiansen@example.com',
@@ -210,7 +210,7 @@ const userDataa = [
     first_name: 'Alexs',
     last_name: 'christiansen',
     title: 'mr',
-    picture: `${alexs}`,
+    picture: alexs
   },
   {
     email: 'melissa.fleming@example.com',
@@ -230,7 +230,7 @@ const userDataa = [
     first_name: 'melissa',
     last_name: 'fleming',
     title: 'miss',
-    picture: `${pragati}`,
+    picture: pragati
   },
   {
     email: 'christoffer.christiansen@example.com',
@@ -250,7 +250,7 @@ const userDataa = [
     first_name: 'christoffer',
     last_name: 'christiansen',
     title: 'mr',
-    picture: `${fanette}`,
+    picture: fanette
   },
   {
     email: 'christoffer.christiansen@example.com',
@@ -270,7 +270,7 @@ const userDataa = [
     first_name: 'Lucas',
     last_name: 'christiansen',
     title: 'mr',
-    picture: `${lucas}`,
+    picture: lucas
   },
   {
     email: 'christoffer.christiansen@example.com',
@@ -290,7 +290,7 @@ const userDataa = [
     first_name: 'Alexs',
     last_name: 'christiansen',
     title: 'mr',
-    picture: `${alexs}`,
+    picture: alexs
   },
   {
     email: 'melissa.fleming@example.com',
@@ -310,7 +310,7 @@ const userDataa = [
     first_name: 'melissa',
     last_name: 'fleming',
     title: 'miss',
-    picture: `${pragati}`,
+    picture: pragati
   },
   {
     email: 'christoffer.christiansen@example.com',
@@ -330,7 +330,7 @@ const userDataa = [
     first_name: 'christoffer',
     last_name: 'christiansen',
     title: 'mr',
-    picture: `${fanette}`,
+    picture: fanette
   },
   {
     email: 'christoffer.christiansen@example.com',
@@ -350,7 +350,7 @@ const userDataa = [
     first_name: 'Lucas',
     last_name: 'christiansen',
     title: 'mr',
-    picture: `${lucas}`,
+    picture: lucas
   },
   {
     email: 'christoffer.christiansen@example.com',
@@ -370,7 +370,7 @@ const userDataa = [
     first_name: 'Alexs',
     last_name: 'christiansen',
     title: 'mr',
-    picture: `${alexs}`,
+    picture: alexs
   },
 ];
 

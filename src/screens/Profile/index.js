@@ -62,9 +62,9 @@ const Profile = ({navigation}) => {
         <TouchableOpacity
           onPress={() => navigation.navigate('EditProfile')}
           style={styles.footerSection}>
-          <Text style={styles.footerTitle}>My Wallet </Text>
+          <Text style={styles.footerTitle}>Verify Aadhar </Text>
           <Text style={styles.footerSubTitle}>
-            True Maid wallet history and redeemed gift cards
+            Each maid need to verify aadhar status.
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
