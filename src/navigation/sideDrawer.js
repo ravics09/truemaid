@@ -10,7 +10,15 @@ Ionicons.loadFont().then();
 import {AboutUs, Privacy, Home, Setting, Notification} from './../screens';
 
 const SideDrawer = ({navigation}) => (
-  <Drawer.Navigator>
+  <Drawer.Navigator
+  screenOptions={{
+    drawerType: 'front',
+    drawerStyle: {
+      backgroundColor: '#fffff',
+      width: 240,
+    },
+  }}
+  >
     <Drawer.Screen
       name="True Maid"
       component={Home}
@@ -72,7 +80,7 @@ const SideDrawer = ({navigation}) => (
       component={Notification}
       options={() => ({
         title: 'Notification',
-        drawerItemStyle: { display: "none" },
+        drawerItemStyle: {display: 'none'},
         headerShown: true,
         headerLeft: () => (
           <TouchableOpacity style={{paddingLeft: 20}}>
@@ -93,6 +101,24 @@ const SideDrawer = ({navigation}) => (
         drawerLabel: 'Setting',
         headerShown: true,
         title: 'Setting',
+        headerLeft: () => (
+          <TouchableOpacity style={{paddingLeft: 20}}>
+            <Ionicons
+              name="arrow-back"
+              size={25}
+              style={[{color: 'black'}]}
+              onPress={() => navigation.goBack()}
+            />
+          </TouchableOpacity>
+        ),
+      }}
+    />
+    <Drawer.Screen
+      name="signout"
+      component={Setting}
+      options={{
+        drawerLabel: 'Sign Out',
+        headerShown: false,
         headerLeft: () => (
           <TouchableOpacity style={{paddingLeft: 20}}>
             <Ionicons

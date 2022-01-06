@@ -1,14 +1,9 @@
 import React, {useState} from 'react';
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  ImageBackground,
-  ScrollView,
-} from 'react-native';
-import {Input, Icon, Button} from 'react-native-elements';
-import * as OnboardingImage from './../../constant/imagePath';
+import {View, Text, TouchableOpacity, ScrollView} from 'react-native';
+import {Input, Button} from 'react-native-elements';
+import {useDispatch} from 'react-redux';
 
+import {signup} from './../../actions/auth';
 import styles from './styles';
 
 const SignUp = ({navigation}) => {
@@ -16,10 +11,33 @@ const SignUp = ({navigation}) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [isLoading, setLoading] = useState(false);
 
-  const onSubmitHandler = () => {
+  const dispatch = useDispatch();
+
+  const onSignUp = () => {
     setIsSubmit(true);
+
+    let user = {
+      userName: username,
+      password: password,
+      confirmPassword: confirmPassword,
+    };
+
+    dispatch(signup(user))
+      .then(response => {
+        if (response.status === 'success') {
+          setTimeout(() => {
+            setLoading(false);
+            navigation.replace('SignIn');
+          }, 3000);
+        }
+      })
+      .catch(() => {
+        setLoading(false);
+      });
   };
+
   return (
     <ScrollView style={{flex: 1}}>
       <View style={styles.header}>
@@ -29,17 +47,21 @@ const SignUp = ({navigation}) => {
       </View>
       <View style={styles.body}>
         <View style={styles.formSection}>
-          <Input placeholder="Username" onChangeText={setUsername} style={styles.inputField}/>
+          <Input
+            placeholder="Username"
+            onChangeText={(text) => setUsername(text)}
+            style={styles.inputField}
+          />
           <Input
             placeholder="Password"
             secureTextEntry={true}
-            onChangeText={setPassword}
+            onChangeText={text => setPassword(text)}
             style={styles.inputField}
           />
-        <Input
+          <Input
             placeholder="Confirm Password"
             secureTextEntry={true}
-            onChangeText={setConfirmPassword}
+            onChangeText={(text) => setConfirmPassword(text)}
             style={styles.inputField}
           />
           <Button
@@ -47,8 +69,8 @@ const SignUp = ({navigation}) => {
             loading={isSubmit}
             buttonStyle={styles.signUpButton}
             containerStyle={styles.buttonContainer}
-            titleStyle={{fontWeight: 'bold', color: 'black',}}
-            onPress={() => onSubmitHandler()}
+            titleStyle={{fontWeight: 'bold', color: 'black'}}
+            onPress={() => onSignUp()}
           />
           <View style={styles.footer}>
             <Text style={styles.footerText}>Already have an account? </Text>

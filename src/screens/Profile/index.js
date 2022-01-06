@@ -2,23 +2,23 @@ import React from 'react';
 import {
   View,
   Text,
-  Button,
   ScrollView,
-  Dimensions,
   TouchableOpacity,
 } from 'react-native';
-const HEIGHT = Dimensions.get('window').height;
+import {useSelector} from 'react-redux';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 Ionicons.loadFont().then(); // To avoid 'Unrecognized font family ionicons' Warning
 
 import styles from './styles';
 
 const Profile = ({navigation}) => {
+  const { user } = useSelector(state=>state.auth);
+
   return (
     <>
       <View style={styles.header}>
         <View style={styles.headerSections}>
-          <Text style={styles.headerTitle}>Welcome back User</Text>
+          <Text style={styles.headerTitle}>Welcome back {user.userName}</Text>
           <Text style={styles.headerSubTitle}>
             here are your TrueMaid membership details-
           </Text>

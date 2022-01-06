@@ -1,14 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import 'react-native-gesture-handler';
-import {SafeAreaView, StatusBar} from 'react-native';
+import {useSelector} from 'react-redux';
 import {NavigationContainer, DefaultTheme} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import * as NavStack from './stackNavigation';
-import SideDrawer from './sideDrawer';
 import Onboarding from './../screens/Onboarding/index';
-import BottomTabs from './bottomTab';
 
 const Stack = createNativeStackNavigator();
 const MyTheme = {
@@ -19,7 +17,7 @@ const MyTheme = {
   },
 };
 
-const SwitchNavigation = (isFirstTimeLaunch, user) => {
+const SwitchNavigation = (isFirstTimeLaunch, isLoggedIn) => {
   switch (isFirstTimeLaunch) {
     case null:
       return null;
@@ -50,19 +48,24 @@ const SwitchNavigation = (isFirstTimeLaunch, user) => {
     case false:
       return (
         <NavigationContainer theme={MyTheme}>
-          {user ? (
+          {isLoggedIn ? (
             <Stack.Navigator headerMode="none">
-             <Stack.Screen
-              name="MainStack"
-              component={NavStack.MainStack}
-              options={{headerShown: false}}
-            />
+              <Stack.Screen
+                name="MainStack"
+                component={NavStack.MainStack}
+                options={{headerShown: false}}
+              />
             </Stack.Navigator>
           ) : (
             <Stack.Navigator headerMode="none">
               <Stack.Screen
                 name="Auth"
                 component={NavStack.AuthStack}
+                options={{headerShown: false}}
+              />
+              <Stack.Screen
+                name="MainStack"
+                component={NavStack.MainStack}
                 options={{headerShown: false}}
               />
             </Stack.Navigator>
@@ -75,7 +78,7 @@ const SwitchNavigation = (isFirstTimeLaunch, user) => {
 
 const GlobalNavigator = () => {
   const [isFirstTimeLaunch, setIsFirstTimeLaunch] = useState(null);
-  const [user, setUser] = useState(true);
+  const {isLoggedIn} = useSelector(state => state.auth);
 
   useEffect(() => {
     AsyncStorage.getItem('alreadyLaunched').then(value => {
@@ -88,7 +91,7 @@ const GlobalNavigator = () => {
     });
   }, []);
 
-  return <>{SwitchNavigation(isFirstTimeLaunch, user)}</>;
+  return <>{SwitchNavigation(isFirstTimeLaunch, isLoggedIn)}</>;
 };
 
 export default GlobalNavigator;

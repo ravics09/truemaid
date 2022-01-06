@@ -69,7 +69,8 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderWidth: 1,
     borderColor: 'white',
-    borderRadius: 15,
+    borderBottomLeftRadius: 20,
+    borderTopRightRadius: 20,
     color: 'black'
   },
   buttonContainer: {
