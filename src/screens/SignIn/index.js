@@ -27,7 +27,7 @@ const SignIn = ({navigation}) => {
 
     let user = {
       userName: username,
-      password: password,
+      password: password
     };
 
     dispatch(signin(user))

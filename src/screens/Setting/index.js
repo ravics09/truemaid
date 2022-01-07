@@ -1,12 +1,27 @@
 import React from 'react';
-import { View, Text, Button} from 'react-native';
+import {View, Text} from 'react-native';
+import {useDispatch} from 'react-redux';
+import {signout} from './../../actions/auth';
 
 const Setting = () => {
-    return(
-        <View>
-            <Text>This is Setting screen</Text>
-        </View>
-    )
-}
+  const dispatch = useDispatch();
+
+  const OnSignOut = () => {
+    dispatch(signout()).then(response => {
+      setTimeout(() => {
+        setLoading(false);
+        navigation.replace('Auth');
+      }, 3000);
+    });
+  };
+
+  return (
+    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+      <Text style={{color: 'white'}} onPress={() => OnSignOut()}>
+        Logout
+      </Text>
+    </View>
+  );
+};
 
 export default Setting;

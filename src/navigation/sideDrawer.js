@@ -14,7 +14,7 @@ const SideDrawer = ({navigation}) => (
   screenOptions={{
     drawerType: 'front',
     drawerStyle: {
-      backgroundColor: '#fffff',
+      backgroundColor: '#ffff',
       width: 240,
     },
   }}
@@ -101,24 +101,6 @@ const SideDrawer = ({navigation}) => (
         drawerLabel: 'Setting',
         headerShown: true,
         title: 'Setting',
-        headerLeft: () => (
-          <TouchableOpacity style={{paddingLeft: 20}}>
-            <Ionicons
-              name="arrow-back"
-              size={25}
-              style={[{color: 'black'}]}
-              onPress={() => navigation.goBack()}
-            />
-          </TouchableOpacity>
-        ),
-      }}
-    />
-    <Drawer.Screen
-      name="signout"
-      component={Setting}
-      options={{
-        drawerLabel: 'Sign Out',
-        headerShown: false,
         headerLeft: () => (
           <TouchableOpacity style={{paddingLeft: 20}}>
             <Ionicons

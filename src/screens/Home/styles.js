@@ -3,8 +3,7 @@ const Height = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
   header: {
-    // flex: 1,
-    height: 250 ,
+    height: 230 ,
     backgroundColor: 'white',
   },
   headerBody: {
@@ -36,8 +35,8 @@ const styles = StyleSheet.create({
     paddingHorizontal:15
   },
   filterImage:{
-    width: 80,
-    height: 80,
+    width: 50,
+    height: 50,
     borderRadius:50
   }
 });

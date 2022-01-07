@@ -12,6 +12,9 @@ import {
   Launch,
   Profile,
   EditProfile,
+  EditMaidDetails,
+  EditProfilePhoto,
+  ResetPassword,
   Listed,
   MaidDetail,
   Message,
@@ -95,6 +98,57 @@ const ProfileStack = ({navigation}) => (
       component={EditProfile}
       options={() => ({
         title: 'Edit Profile',
+        headerLeft: () => (
+          <TouchableOpacity style={{paddingLeft: 20}}>
+            <Ionicons
+              name="arrow-back"
+              size={25}
+              style={[{color: 'black'}]}
+              onPress={() => navigation.navigate('Profile')}
+            />
+          </TouchableOpacity>
+        ),
+      })}
+    />
+    <Stack.Screen
+      name="EditMaidDetails"
+      component={EditMaidDetails}
+      options={() => ({
+        title: 'Edit Maid Details',
+        headerLeft: () => (
+          <TouchableOpacity style={{paddingLeft: 20}}>
+            <Ionicons
+              name="arrow-back"
+              size={25}
+              style={[{color: 'black'}]}
+              onPress={() => navigation.navigate('Profile')}
+            />
+          </TouchableOpacity>
+        ),
+      })}
+    />
+    <Stack.Screen
+      name="EditProfilePhoto"
+      component={EditProfilePhoto}
+      options={() => ({
+        title: 'Edit Profile Photo',
+        headerLeft: () => (
+          <TouchableOpacity style={{paddingLeft: 20}}>
+            <Ionicons
+              name="arrow-back"
+              size={25}
+              style={[{color: 'black'}]}
+              onPress={() => navigation.navigate('Profile')}
+            />
+          </TouchableOpacity>
+        ),
+      })}
+    />
+    <Stack.Screen
+      name="ResetPassword"
+      component={ResetPassword}
+      options={() => ({
+        title: 'Update Password',
         headerLeft: () => (
           <TouchableOpacity style={{paddingLeft: 20}}>
             <Ionicons

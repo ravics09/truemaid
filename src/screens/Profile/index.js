@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  ScrollView,
-  TouchableOpacity,
-} from 'react-native';
+import {View, Text, ScrollView, TouchableOpacity} from 'react-native';
 import {useSelector} from 'react-redux';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 Ionicons.loadFont().then(); // To avoid 'Unrecognized font family ionicons' Warning
@@ -12,7 +7,7 @@ Ionicons.loadFont().then(); // To avoid 'Unrecognized font family ionicons' Warn
 import styles from './styles';
 
 const Profile = ({navigation}) => {
-  const { user } = useSelector(state=>state.auth);
+  const {user} = useSelector(state => state.auth);
 
   return (
     <>
@@ -40,32 +35,30 @@ const Profile = ({navigation}) => {
           style={styles.footerSection}>
           <Text style={styles.footerTitle}>My Profile </Text>
           <Text style={styles.footerSubTitle}>
-            Edit personal info, change password
+            Edit contact, address information
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => navigation.navigate('EditProfile')}
+          onPress={() => navigation.navigate('EditProfilePhoto')}
           style={styles.footerSection}>
-          <Text style={styles.footerTitle}>My Photo </Text>
+          <Text style={styles.footerTitle}>Profile Photo</Text>
           <Text style={styles.footerSubTitle}>
-            Upload, edit or remove profile photo
+            Add, Remove or Update Profile Photo
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => navigation.navigate('EditProfile')}
+          onPress={() => navigation.navigate('EditMaidDetails')}
           style={styles.footerSection}>
-          <Text style={styles.footerTitle}>My Addresses </Text>
+          <Text style={styles.footerTitle}>Are You Maid ?</Text>
           <Text style={styles.footerSubTitle}>
-            Edit, add or remove addresses
+            If you are maid verify you aadhar
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => navigation.navigate('EditProfile')}
+          onPress={() => navigation.navigate('ResetPassword')}
           style={styles.footerSection}>
-          <Text style={styles.footerTitle}>Verify Aadhar </Text>
-          <Text style={styles.footerSubTitle}>
-            Each maid need to verify aadhar status.
-          </Text>
+          <Text style={styles.footerTitle}>Change Password </Text>
+          <Text style={styles.footerSubTitle}>Change true maid password</Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => navigation.navigate('EditProfile')}

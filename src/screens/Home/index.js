@@ -391,12 +391,13 @@ const Home = ({navigation}) => {
         onPress={() => handleFilter(item.filterName)}>
         <View
           style={{
-            padding: 16,
-            height: 100,
+            padding: 15,
             color: 'white',
+            width:100,
+            alignItems: 'center'
           }}>
           <Image source={item.uri} style={styles.filterImage} />
-          <Text style={{color: 'white', paddingTop: 10, textAlign: 'center'}}>
+          <Text style={{color: 'white', paddingTop: 10, }}>
             {item.name}
           </Text>
         </View>
