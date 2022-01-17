@@ -21,7 +21,7 @@ const Profile = ({navigation}) => {
         <View style={styles.headerSections}>
           <Text style={styles.headerTitle}>Current Plan</Text>
           <Text style={styles.headerSubTitle}>
-            Save more with unlimited access plan - Rs.100
+            You are using free plan 
           </Text>
         </View>
         <View style={styles.headerSections}>

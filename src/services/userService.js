@@ -51,7 +51,28 @@ const editProfile = user => {
   );
 };
 
+const updatePassword = user => {
+  return axiosObject.put(`/resetpassword/${user.id}`, user).then(
+    response => {
+      console.log('password updated after resonse', response);
+      if (response.data.status === 200) {
+        return {
+          status: 'success'
+        };
+      }
+    },
+    error => {
+      if (error.response) {
+        return {status: 'failed', message: error.response.data};
+      } else {
+        return {status: 'failed', message: 'Server Not Responding'};
+      }
+    },
+  );
+}
+ 
 export default {
   getProfile,
-  editProfile
+  editProfile,
+  updatePassword
 };

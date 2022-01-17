@@ -20,8 +20,9 @@ const EditMaidDetails = () => {
   const [isOTPVerified, setOTPVerified] = useState(false);
 
   useEffect(() => {
-      setUsername(user.userName);
-      //Populate all the fields if available
+    const {userName} = user;
+    setUsername(userName);
+    //Populate all the fields if available
   }, []);
 
   const onSave = () => {
@@ -53,11 +54,7 @@ const EditMaidDetails = () => {
 
   return (
     <ScrollView style={{flex: 1, paddingVertical: 20}}>
-      <Input
-        value={username}
-        style={styles.inputField}
-        disabled={true}
-      />
+      <Input value={username} style={styles.inputField} disabled={true} />
       <Input
         placeholder="Aadhar Number"
         value={aadhar}
