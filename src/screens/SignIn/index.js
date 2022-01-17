@@ -56,19 +56,21 @@ const SignIn = ({navigation}) => {
         </View>
       </View>
       {isLoading ? (
-        <View style={{flex:1,justifyContent:'center'}}>
-          <ActivityIndicator size='small' color="#fffff"/>
+        <View style={{flex:1,justifyContent:'center', alignItems: 'center'}}>
+          <ActivityIndicator size='large' color="orange"/>
         </View>
       ) : (
         <View style={styles.body}>
           <View style={styles.formSection}>
             <Input
               placeholder="Username"
+              autoCapitalize="none"
               onChangeText={text => setUsername(text)}
               style={styles.inputField}
             />
             <Input
               placeholder="Password"
+              autoCapitalize="none"
               secureTextEntry={true}
               onChangeText={text => setPassword(text)}
               style={styles.inputField}

@@ -12,7 +12,7 @@ const fanette = require('./../../assets/images/algolia/women/fanette.png');
 const lucas = require('./../../assets/images/algolia/men/lucas.png');
 const alexs = require('./../../assets/images/algolia/men/alexs.png');
 
-const maidData = [
+const categoryData = [
   {
     key: '1',
     name: 'House Maids',
@@ -51,7 +51,7 @@ const maidData = [
   },
 ];
 
-const userDataa = [
+const maidData = [
   {
     email: 'melissa.fleming@example.com',
     gender: 'female',
@@ -376,12 +376,12 @@ const userDataa = [
 
 const Home = ({navigation}) => {
   const [text, setText] = useState('');
-  const [data, setData] = useState([]);
-  const [userData, setUserData] = useState([]);
+  const [category, setCategoryData] = useState([]);
+  const [filterMaidData, setFilterMaidData] = useState([]);
 
   useEffect(() => {
-    setUserData(userDataa);
-    setData(maidData);
+    setFilterMaidData(maidData);
+    setCategoryData(categoryData);
   }, []);
 
   const renderHorizontalList = ({item}) => {
@@ -435,15 +435,15 @@ const Home = ({navigation}) => {
   };
 
   const handleFilter = filterName => {
-    let newUserData = userDataa.filter(element => {
+    let newUserData = maidData.filter(element => {
       return element.work === filterName;
     });
-    setUserData(newUserData);
+    setFilterMaidData(newUserData);
   };
 
   const handleSearch = text => {
     const formattedText = text.toString().toLowerCase();
-    const filteredData = userDataa.filter(element => {
+    const filteredData = maidData.filter(element => {
       const pincode = element.location.postcode;
       const userCity = element.location.city;
       return (
@@ -451,7 +451,7 @@ const Home = ({navigation}) => {
         userCity.indexOf(formattedText) > -1
       );
     });
-    setUserData(filteredData);
+    setFilterMaidData(filteredData);
     setText(text);
   };
 
@@ -484,7 +484,7 @@ const Home = ({navigation}) => {
               horizontal
               pagingEnabled={true}
               showsHorizontalScrollIndicator={false}
-              data={data}
+              data={category}
               keyExtractor={(item, index) => index}
               renderItem={item => renderHorizontalList(item)}
             />
@@ -507,7 +507,7 @@ const Home = ({navigation}) => {
             <FlatList
               pagingEnabled={true}
               showsHorizontalScrollIndicator={false}
-              data={userData}
+              data={filterMaidData}
               keyExtractor={(item, index) => index}
               renderItem={(item, index) => renderVerticalList(item, index)}
             />

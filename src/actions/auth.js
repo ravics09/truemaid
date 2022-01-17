@@ -5,8 +5,11 @@ import {
   SIGNIN_FAIL,
   SIGNOUT,
   SET_MESSAGE,
+  USER_UPDATE_SUCCESS,
+  USER_UPDATE_FAIL
 } from './type';
 import AuthService from '../services/authService';
+import UserService from '../services/userService';
 
 export const signup = user => dispatch => {
   return AuthService.signUp(user).then(
@@ -65,4 +68,31 @@ export const signout = () => dispatch => {
   dispatch({
     type: SIGNOUT,
   });
+};
+
+export const editprofile = user => dispatch => {
+  return UserService.editProfile(user).then(
+    response => {
+      if (response.status === 'success') {
+        console.log('user updated info in action side', response.user);
+        dispatch({
+          type: USER_UPDATE_SUCCESS,
+          payload: {user: response.user},
+        });
+
+        Promise.resolve();
+        return response;
+      }
+    },
+    error => {
+      const message = error.toString();
+
+      dispatch({
+        type: USER_UPDATE_FAIL,
+      });
+
+      Promise.reject();
+      return message;
+    },
+  );
 };

@@ -9,16 +9,13 @@ export let axiosObject = axios.create({
   timeout: 10000,
 });
 
-const signIn = async user => {
-  return axiosObject.post('/signin', user).then(
+const getProfile = id => {
+  return axiosObject.get(`/getprofile/${id}`).then(
     response => {
-      if (response.data.status === 200) {
-        Storage.setItem('trueMaidUser', JSON.stringify(response.data.user));
-        Storage.setItem('accessToken', response.data.accessToken);
-
+      console.log('getProfile in auth service', response.data.user);
+      if (response.status === 200) {
         return {
           status: 'success',
-          message: 'You are redirecting to home page',
           user: response.data.user,
         };
       }
@@ -33,14 +30,14 @@ const signIn = async user => {
   );
 };
 
-const signUp = user => {
-  return axiosObject.post('/signup', user).then(
+const editProfile = user => {
+  return axiosObject.put(`/editprofile/${user.id}`, user).then(
     response => {
+      console.log('editprofile reponse in user service', response);
       if (response.data.status === 200) {
         return {
           status: 'success',
-          message:
-            'You have successfully signed up! Now you should be able to sign in.',
+          user: response.data.user,
         };
       }
     },
@@ -54,13 +51,7 @@ const signUp = user => {
   );
 };
 
-const signOut = () => {
-  AsyncStorage.clear();
-  return true;
-};
-
 export default {
-  signIn,
-  signUp,
-  signOut
+  getProfile,
+  editProfile
 };
