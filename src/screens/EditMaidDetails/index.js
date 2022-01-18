@@ -36,7 +36,6 @@ const EditMaidDetails = () => {
       availabilityDate,
       languages,
     };
-    console.log('maid user details', user);
   };
 
   const onSentOTP = () => {

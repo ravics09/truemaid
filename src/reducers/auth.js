@@ -6,6 +6,8 @@ import {
   SIGNOUT,
   USER_UPDATE_SUCCESS,
   USER_UPDATE_FAIL,
+  UPDATE_PHOTO_SUCCESS,
+  UPDATE_PHOTO_FAIL
 } from '../actions/type';
 import Storage from '../utils/storage';
 
@@ -55,6 +57,16 @@ export default auth = (state = initialState, action) => {
         user: payload.user,
       };
     case USER_UPDATE_FAIL:
+      return {
+        ...state,
+      };
+      case UPDATE_PHOTO_SUCCESS:
+      return {
+        ...state,
+        ...initialState,
+        user: payload.user,
+      };
+    case UPDATE_PHOTO_FAIL:
       return {
         ...state,
       };

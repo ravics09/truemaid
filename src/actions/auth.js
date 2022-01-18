@@ -6,7 +6,9 @@ import {
   SIGNOUT,
   SET_MESSAGE,
   USER_UPDATE_SUCCESS,
-  USER_UPDATE_FAIL
+  USER_UPDATE_FAIL,
+  UPDATE_PHOTO_SUCCESS,
+  UPDATE_PHOTO_FAIL
 } from './type';
 import AuthService from '../services/authService';
 import UserService from '../services/userService';
@@ -74,7 +76,6 @@ export const editprofile = user => dispatch => {
   return UserService.editProfile(user).then(
     response => {
       if (response.status === 'success') {
-        console.log('user updated info in action side', response.user);
         dispatch({
           type: USER_UPDATE_SUCCESS,
           payload: {user: response.user},
@@ -96,3 +97,29 @@ export const editprofile = user => dispatch => {
     },
   );
 };
+
+export const updatephoto = (user, id) => dispatch => {
+  return UserService.updatePhoto(user, id).then(
+    response => {
+      if (response.status === 'success') {
+        dispatch({
+          type: UPDATE_PHOTO_SUCCESS,
+          payload: {user: response.user},
+        });
+
+        Promise.resolve();
+        return response;
+      }
+    },
+    error => {
+      const message = error.toString();
+
+      dispatch({
+        type: UPDATE_PHOTO_FAIL,
+      });
+
+      Promise.reject();
+      return message;
+    },
+  );
+}

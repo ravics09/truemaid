@@ -12,7 +12,6 @@ export let axiosObject = axios.create({
 const getProfile = id => {
   return axiosObject.get(`/getprofile/${id}`).then(
     response => {
-      console.log('getProfile in auth service', response.data.user);
       if (response.status === 200) {
         return {
           status: 'success',
@@ -33,7 +32,6 @@ const getProfile = id => {
 const editProfile = user => {
   return axiosObject.put(`/editprofile/${user.id}`, user).then(
     response => {
-      console.log('editprofile reponse in user service', response);
       if (response.data.status === 200) {
         return {
           status: 'success',
@@ -54,7 +52,6 @@ const editProfile = user => {
 const updatePassword = user => {
   return axiosObject.put(`/resetpassword/${user.id}`, user).then(
     response => {
-      console.log('password updated after resonse', response);
       if (response.data.status === 200) {
         return {
           status: 'success'
@@ -70,9 +67,30 @@ const updatePassword = user => {
     },
   );
 }
+
+const updatePhoto = (user, id) => {
+  return axiosObject.put(`/uploadprofilephoto/${id}`, user).then(
+    (response) => {
+      if (response.status === 200) {
+        return {
+          user: response.data.user,
+          status: "success"
+        };
+      }
+    },
+    (error) => {
+      if (error.response) {
+        return { status: "failed", message: error.response.data };
+      } else {
+        return { status: "failed", message: "Server Not Responding" };
+      }
+    }
+  );
+}
  
 export default {
   getProfile,
   editProfile,
-  updatePassword
+  updatePassword,
+  updatePhoto
 };

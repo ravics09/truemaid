@@ -14,11 +14,9 @@ const ResetPassword = () => {
   // const dispatch = useDispatch();
 
   useEffect(() => {
-    // console.log("user exist",user);
   }, []);
 
   const onUpdatePassword = async () => {
-    console.log('user exist', user);
     setIsLoading(true);
     const userInfo = {
       id: user._id,
@@ -26,7 +24,6 @@ const ResetPassword = () => {
       confirmPassword,
     };
     const result = await UserService.updatePassword(userInfo);
-    console.log('result==', result);
 
     if (result.status === 'success') {
       alert('password updated successfully');
