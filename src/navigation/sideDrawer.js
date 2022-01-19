@@ -11,14 +11,13 @@ import {AboutUs, Privacy, Home, Setting, Notification} from './../screens';
 
 const SideDrawer = ({navigation}) => (
   <Drawer.Navigator
-  screenOptions={{
-    drawerType: 'front',
-    drawerStyle: {
-      backgroundColor: '#ffff',
-      width: 240,
-    },
-  }}
-  >
+    screenOptions={{
+      drawerType: 'front',
+      drawerStyle: {
+        backgroundColor: '#ffff',
+        width: 240,
+      },
+    }}>
     <Drawer.Screen
       name="True Maid"
       component={Home}
