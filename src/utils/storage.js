@@ -17,9 +17,19 @@ const getAllKeys = () => {
   return AsyncStorage.getAllKeys();
 };
 
+const removeAll = () => {
+  return AsyncStorage.clear();
+};
+
+const multiRemove = (items) => {
+  return AsyncStorage.multiRemove(items);
+}
+
 export default {
   getItem,
   setItem,
   removeItem,
-  getAllKeys
+  getAllKeys,
+  removeAll,
+  multiRemove
 };

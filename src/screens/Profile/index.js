@@ -1,13 +1,35 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {View, Text, ScrollView, TouchableOpacity} from 'react-native';
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 Ionicons.loadFont().then(); // To avoid 'Unrecognized font family ionicons' Warning
-
+import {MAID_UPDATE_SUCCESS} from '../../actions/type';
+import Storage from '../../utils/storage';
+import MaidService from '../../services/maidService';
 import styles from './styles';
 
 const Profile = ({navigation}) => {
   const {user} = useSelector(state => state.auth);
+  const {maidData} = useSelector(state => state.maid);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    console.log("maidData on profile ====",maidData);
+    if(user.isMaid && !maidData._id){
+      fetchMaidData(user.maidId);
+    }
+
+    async function fetchMaidData(maidId){
+      await MaidService.fetchMaid(maidId).then(res=>{
+        console.log("got response from fetch api",res);
+        Storage.setItem('trueMaidMaid', JSON.stringify(res.maid));
+        dispatch({
+          type: MAID_UPDATE_SUCCESS,
+          payload: {maid: res.maid},
+        });
+      })
+    }
+  },[user])
 
   return (
     <>
@@ -20,9 +42,7 @@ const Profile = ({navigation}) => {
         </View>
         <View style={styles.headerSections}>
           <Text style={styles.headerTitle}>Current Plan</Text>
-          <Text style={styles.headerSubTitle}>
-            You are using free plan 
-          </Text>
+          <Text style={styles.headerSubTitle}>You are using free plan</Text>
         </View>
         <View style={styles.headerSections}>
           <Text style={styles.headerTitle}>Date of Expiry</Text>

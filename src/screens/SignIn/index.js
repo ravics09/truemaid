@@ -27,7 +27,7 @@ const SignIn = ({navigation}) => {
 
     let user = {
       userName: username,
-      password: password
+      password: password,
     };
 
     dispatch(signin(user))
@@ -56,8 +56,8 @@ const SignIn = ({navigation}) => {
         </View>
       </View>
       {isLoading ? (
-        <View style={{flex:1,justifyContent:'center', alignItems: 'center'}}>
-          <ActivityIndicator size='large' color="orange"/>
+        <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+          <ActivityIndicator size="large" color="orange" />
         </View>
       ) : (
         <View style={styles.body}>

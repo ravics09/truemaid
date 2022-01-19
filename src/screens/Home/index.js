@@ -2,9 +2,9 @@ import React, {useState, useEffect, Fragment} from 'react';
 import {Input, Avatar} from 'react-native-elements';
 import {View, Text, FlatList, Image, TouchableOpacity} from 'react-native';
 import NavigationString from './../../constant/navigationString';
-
 import styles from './styles';
 import * as FilterImage from './../../constant/imagePath';
+import MaidService from '../../services/maidService';
 
 
 const pragati = require('./../../assets/images/algolia/women/pragati.png');
@@ -380,8 +380,14 @@ const Home = ({navigation}) => {
   const [filterMaidData, setFilterMaidData] = useState([]);
 
   useEffect(() => {
+    async function fetchAllMaidDetails(){
+      await MaidService.fetchAllMaid().then(res=>{
+        console.log("list of all maids",res.maids);
+      })
+    }
     setFilterMaidData(maidData);
     setCategoryData(categoryData);
+    fetchAllMaidDetails();
   }, []);
 
   const renderHorizontalList = ({item}) => {

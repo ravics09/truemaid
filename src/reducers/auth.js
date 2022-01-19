@@ -3,7 +3,6 @@ import {
   SIGNIN_SUCCESS,
   SIGNIN_FAIL,
   SIGNUP_FAIL,
-  SIGNOUT,
   USER_UPDATE_SUCCESS,
   USER_UPDATE_FAIL,
   UPDATE_PHOTO_SUCCESS,
@@ -39,12 +38,6 @@ export default auth = (state = initialState, action) => {
         user: payload.user,
       };
     case SIGNIN_FAIL:
-      return {
-        ...state,
-        isLoggedIn: false,
-        user: null,
-      };
-    case SIGNOUT:
       return {
         ...state,
         isLoggedIn: false,

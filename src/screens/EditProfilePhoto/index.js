@@ -63,6 +63,7 @@ const EditProfilePhoto = () => {
           setTimeout(() => {
             setIsLoading(false);
             setProfilePhoto(response.profilePhoto);
+            setIsPhotoSelected(false);
             alert('profile photo updated successfully');
           }, 2000);
         } else {

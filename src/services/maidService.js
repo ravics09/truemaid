@@ -1,21 +1,25 @@
 import axios from 'axios';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import Storage from './../utils/storage';
 
-const BASE_URL = 'http://localhost:9090/user';
+const BASE_URL = 'http://localhost:9090/maid';
 
 export let axiosObject = axios.create({
   baseURL: BASE_URL,
   timeout: 10000,
 });
 
-const getProfile = id => {
-  return axiosObject.get(`/getprofile/${id}`).then(
+const createMaid = user => {
+  return axiosObject.post(`/createmaid/${user.id}`, user).then(
     response => {
-      if (response.status === 200) {
+      if (response.data.status === 200) {
+        console.log(
+          '===========createMaid service maid data coming from backend===========',
+          response.data.maid,
+        );
+        Storage.setItem('trueMaidMaid', JSON.stringify(response.data.maid));
         return {
           status: 'success',
-          user: response.data.user,
+          maid: response.data.maid,
         };
       }
     },
@@ -29,13 +33,13 @@ const getProfile = id => {
   );
 };
 
-const editProfile = user => {
-  return axiosObject.put(`/editprofile/${user.id}`, user).then(
+const editMaid = maidinfo => {
+  return axiosObject.put(`/editmaid/${maidinfo.id}`, maidinfo).then(
     response => {
       if (response.data.status === 200) {
         return {
           status: 'success',
-          user: response.data.user,
+          maid: response.data.maid,
         };
       }
     },
@@ -49,12 +53,14 @@ const editProfile = user => {
   );
 };
 
-const updatePassword = user => {
-  return axiosObject.put(`/resetpassword/${user.id}`, user).then(
+const fetchMaid  = id => {
+  return axiosObject.get(`/getmaiddetail/${id}`).then(
     response => {
+      console.log("fetch details of maid",response.data);
       if (response.data.status === 200) {
         return {
           status: 'success',
+          maid: response.data.maid,
         };
       }
     },
@@ -66,15 +72,16 @@ const updatePassword = user => {
       }
     },
   );
-};
+}
 
-const updatePhoto = (user, id) => {
-  return axiosObject.put(`/uploadprofilephoto/${id}`, user).then(
+const fetchAllMaid = () => {
+  return axiosObject.get(`/getallmaids`).then(
     response => {
-      if (response.status === 200) {
+      console.log("fetch details of all maids",response.data.maids);
+      if (response.data.status === 200) {
         return {
-          user: response.data.user,
           status: 'success',
+          maids: response.data.maids,
         };
       }
     },
@@ -86,12 +93,11 @@ const updatePhoto = (user, id) => {
       }
     },
   );
-};
-
+}
 
 export default {
-  getProfile,
-  editProfile,
-  updatePassword,
-  updatePhoto
+  createMaid,
+  editMaid,
+  fetchMaid,
+  fetchAllMaid
 };

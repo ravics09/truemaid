@@ -1,6 +1,6 @@
 import axios from 'axios';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import Storage from './../utils/storage';
+import {Platform} from 'react-native';
 
 const BASE_URL = 'http://localhost:9090/user';
 
@@ -54,13 +54,21 @@ const signUp = user => {
   );
 };
 
-const signOut = () => {
-  AsyncStorage.clear();
+const signOut = async () => {
+  const asyncStorageKeys = await Storage.getAllKeys();
+  if (asyncStorageKeys.length > 0) {
+    if (Platform.OS === 'android') {
+      await Storage.removeAll();
+    }
+    if (Platform.OS === 'ios') {
+      await Storage.multiRemove(asyncStorageKeys);
+    }
+  }
   return true;
 };
 
 export default {
   signIn,
   signUp,
-  signOut
+  signOut,
 };
