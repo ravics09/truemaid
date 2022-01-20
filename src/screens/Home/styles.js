@@ -3,7 +3,7 @@ const Height = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
   header: {
-    height: 230 ,
+    height: 230,
     backgroundColor: 'white',
   },
   headerBody: {
@@ -14,12 +14,22 @@ const styles = StyleSheet.create({
   searchSection: {
     alignItems: 'center',
     paddingTop: 20,
-    boarderRadius: 50
+    boarderRadius: 50,
   },
   horizontalFlatlist: {
-    flex:1
+    flex: 1,
   },
-
+  filterBar: {
+    padding: 15,
+    width: 100,
+    alignItems: 'center',
+  },
+  filterBarShadow:{
+    shadowColor: 'white',
+    shadowOffset: {width: -2, height: 4},
+    shadowOpacity: 0.5,
+    shadowRadius: 10,
+  },
   footer: {
     flex: 1,
     backgroundColor: '#181D3D',
@@ -30,15 +40,30 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 50,
   },
   vericalFlatlist: {
-    flex:1,
+    flex: 1,
     paddingTop: 20,
-    paddingHorizontal:15
+    paddingHorizontal: 15,
   },
-  filterImage:{
+  filterImage: {
     width: 50,
     height: 50,
-    borderRadius:50
-  }
+    borderRadius: 50,
+  },
+  card: {
+    backgroundColor: 'white',
+    borderRadius: 50,
+    paddingVertical: 10,
+    paddingHorizontal: 10,
+    width: '100%',
+    marginVertical: 5,
+    flexDirection: 'row',
+  },
+  shadowProp: {
+    shadowColor: '#171717',
+    shadowOffset: {width: -2, height: 4},
+    shadowOpacity: 0.5,
+    shadowRadius: 5,
+  },
 });
 
 export default styles;

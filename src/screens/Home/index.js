@@ -6,10 +6,10 @@ import styles from './styles';
 import * as FilterImage from './../../constant/imagePath';
 import MaidService from '../../services/maidService';
 
-const pragati = require('./../../assets/images/algolia/women/pragati.png');
-const fanette = require('./../../assets/images/algolia/women/fanette.png');
-const lucas = require('./../../assets/images/algolia/men/lucas.png');
-const alexs = require('./../../assets/images/algolia/men/alexs.png');
+// const pragati = require('./../../assets/images/algolia/women/pragati.png');
+// const fanette = require('./../../assets/images/algolia/women/fanette.png');
+// const lucas = require('./../../assets/images/algolia/men/lucas.png');
+// const alexs = require('./../../assets/images/algolia/men/alexs.png');
 
 const categoryData = [
   {
@@ -382,14 +382,10 @@ const Home = ({navigation}) => {
   useEffect(() => {
     async function fetchAllMaidDetails() {
       await MaidService.fetchAllMaid().then(res => {
-        console.log('list of all maids', res.maids);
         setFilterMaidData(res.maids);
         setMaidData(res.maids);
-        // let maidList = res.maids;
-        // maidList.map((item)=>{console.log("first maid info",item)})
       });
     }
-    // setFilterMaidData(maidData);
     fetchAllMaidDetails();
     setCategoryData(categoryData);
   }, []);
@@ -400,14 +396,9 @@ const Home = ({navigation}) => {
         key={item.key}
         onPress={() => handleFilter(item.filterName)}>
         <View
-          style={{
-            padding: 15,
-            color: 'white',
-            width: 100,
-            alignItems: 'center',
-          }}>
+          style={[styles.filterBar, styles.filterBarShadow]}>
           <Image source={item.uri} style={styles.filterImage} />
-          <Text style={{color: 'white', paddingTop: 10}}>{item.name}</Text>
+          <Text style={{color: 'white', paddingTop: 10,  textAlign: 'center'}}>{item.name}</Text>
         </View>
       </TouchableOpacity>
     );
@@ -422,12 +413,7 @@ const Home = ({navigation}) => {
 
     return (
       <TouchableOpacity key={index} onPress={item => openMaidDetails(item)}>
-        <View
-          style={{
-            flexDirection: 'row',
-            padding: 16,
-          }}>
-          {/* <Avatar size={64} rounded source={profilePic} /> */}
+        <View style={[styles.card, styles.shadowProp]}>
           <Image
             source={profilePic ? {uri: profilePic} : null}
             style={{width: 60, height: 60, borderRadius: 50}}
@@ -443,7 +429,8 @@ const Home = ({navigation}) => {
               <Text style={{color: 'black', fontWeight: 'bold', fontSize: 16}}>
                 {item.userInfo.fullName}
               </Text>
-              <Text style={{color: 'black'}}>City - {item.userInfo.city}</Text>
+              <Text style={{color: 'black', paddingVertical:5}}>City - {item.userInfo.city}</Text>
+              <Text style={{color: 'black'}}>Available On - {item.availabilityDate}</Text>
             </View>
             <Text style={{color: 'black'}}>Rs. {item.salary}</Text>
           </View>
@@ -456,7 +443,7 @@ const Home = ({navigation}) => {
     const formattedText = filterName.toString().toLowerCase();
     let newUserData = maidData.filter(element => {
       let fieldEle = element.field.toLowerCase();
-      return fieldEle.includes(formattedText); //formattedText === element.field.toLowerCase();
+      return fieldEle.includes(formattedText);
     });
     setFilterMaidData(newUserData);
   };
