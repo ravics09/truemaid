@@ -388,17 +388,18 @@ const Home = ({navigation}) => {
     }
     fetchAllMaidDetails();
     setCategoryData(categoryData);
-  }, []);
+  }, [maidData]); //  maidData update instantly on screen load but filter caused issue.
 
   const renderHorizontalList = ({item}) => {
     return (
       <TouchableOpacity
         key={item.key}
         onPress={() => handleFilter(item.filterName)}>
-        <View
-          style={[styles.filterBar, styles.filterBarShadow]}>
+        <View style={[styles.filterBar, styles.filterBarShadow]}>
           <Image source={item.uri} style={styles.filterImage} />
-          <Text style={{color: 'white', paddingTop: 10,  textAlign: 'center'}}>{item.name}</Text>
+          <Text style={{color: 'white', paddingTop: 10, textAlign: 'center'}}>
+            {item.name}
+          </Text>
         </View>
       </TouchableOpacity>
     );
@@ -429,8 +430,12 @@ const Home = ({navigation}) => {
               <Text style={{color: 'black', fontWeight: 'bold', fontSize: 16}}>
                 {item.userInfo.fullName}
               </Text>
-              <Text style={{color: 'black', paddingVertical:5}}>City - {item.userInfo.city}</Text>
-              <Text style={{color: 'black'}}>Available On - {item.availabilityDate}</Text>
+              <Text style={{color: 'black', paddingVertical: 5}}>
+                City - {item.userInfo.city}
+              </Text>
+              <Text style={{color: 'black'}}>
+                Available On - {item.availabilityDate}
+              </Text>
             </View>
             <Text style={{color: 'black'}}>Rs. {item.salary}</Text>
           </View>
@@ -498,10 +503,36 @@ const Home = ({navigation}) => {
           </View>
         </View>
       </View>
-
-      <View style={styles.footer}>
-        <View style={styles.footerBody}>
-          <View style={styles.vericalFlatlist}>
+      {maidData ? (
+        <View style={styles.footer}>
+          <View style={styles.footerBody}>
+            <View style={styles.vericalFlatlist}>
+              <Text
+                style={{
+                  color: 'black',
+                  fontWeight: 'bold',
+                  textAlign: 'center',
+                  paddingBottom: 10,
+                }}>
+                Maid in your area
+              </Text>
+              <FlatList
+                pagingEnabled={true}
+                showsHorizontalScrollIndicator={false}
+                data={filterMaidData}
+                keyExtractor={(item, index) => index}
+                renderItem={(item, index) => renderVerticalList(item, index)}
+              />
+            </View>
+          </View>
+        </View>
+      ) : (
+        <View style={styles.footer}>
+          <View
+            style={[
+              styles.footerBody,
+              {alignContent: 'center', justifyContent: 'center'},
+            ]}>
             <Text
               style={{
                 color: 'black',
@@ -509,18 +540,11 @@ const Home = ({navigation}) => {
                 textAlign: 'center',
                 paddingBottom: 10,
               }}>
-              Maid in your area
+              No Maid available in your area
             </Text>
-            <FlatList
-              pagingEnabled={true}
-              showsHorizontalScrollIndicator={false}
-              data={filterMaidData}
-              keyExtractor={(item, index) => index}
-              renderItem={(item, index) => renderVerticalList(item, index)}
-            />
           </View>
         </View>
-      </View>
+      )}
     </Fragment>
   );
 };
