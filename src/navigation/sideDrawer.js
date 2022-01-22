@@ -7,7 +7,8 @@ const Drawer = createDrawerNavigator();
 import Ionicons from 'react-native-vector-icons/Ionicons';
 Ionicons.loadFont().then();
 
-import {AboutUs, Privacy, Home, Setting, Notification} from './../screens';
+import {AboutUs, Privacy, Setting, Notification} from './../screens';
+import BottomTab from './bottomTab';
 
 const SideDrawer = ({navigation}) => (
   <Drawer.Navigator
@@ -19,21 +20,11 @@ const SideDrawer = ({navigation}) => (
       },
     }}>
     <Drawer.Screen
-      name="True Maid"
-      component={Home}
+      name="bottomNav"
+      component={BottomTab}
       options={() => ({
         drawerLabel: 'True Maid',
-        headerShown: true,
-        headerRight: () => (
-          <TouchableOpacity style={{paddingLeft: 20}}>
-            <Ionicons
-              name="notifications"
-              size={25}
-              style={[{color: 'black', paddingRight: 15}]}
-              onPress={() => navigation.navigate('Notification')}
-            />
-          </TouchableOpacity>
-        ),
+        headerShown: false
       })}
     />
     <Drawer.Screen
@@ -43,16 +34,16 @@ const SideDrawer = ({navigation}) => (
         drawerLabel: 'About Us',
         headerShown: true,
         title: 'About Us',
-        headerLeft: () => (
-          <TouchableOpacity style={{paddingLeft: 20}}>
-            <Ionicons
-              name="arrow-back"
-              size={25}
-              style={[{color: 'black'}]}
-              onPress={() => navigation.goBack()}
-            />
-          </TouchableOpacity>
-        ),
+        // headerLeft: () => (
+        //   <TouchableOpacity style={{paddingLeft: 20}}>
+        //     <Ionicons
+        //       name="arrow-back"
+        //       size={25}
+        //       style={[{color: 'black'}]}
+        //       onPress={() => navigation.goBack()}
+        //     />
+        //   </TouchableOpacity>
+        // ),
       }}
     />
     <Drawer.Screen
@@ -62,16 +53,16 @@ const SideDrawer = ({navigation}) => (
         drawerLabel: 'Privacy',
         headerShown: true,
         title: 'Privacy',
-        headerLeft: () => (
-          <TouchableOpacity style={{paddingLeft: 20}}>
-            <Ionicons
-              name="arrow-back"
-              size={25}
-              style={[{color: 'black'}]}
-              onPress={() => navigation.goBack()}
-            />
-          </TouchableOpacity>
-        ),
+        // headerLeft: () => (
+        //   <TouchableOpacity style={{paddingLeft: 20}}>
+        //     <Ionicons
+        //       name="arrow-back"
+        //       size={25}
+        //       style={[{color: 'black'}]}
+        //       onPress={() => navigation.goBack()}
+        //     />
+        //   </TouchableOpacity>
+        // ),
       }}
     />
     <Drawer.Screen
@@ -100,16 +91,16 @@ const SideDrawer = ({navigation}) => (
         drawerLabel: 'Setting',
         headerShown: true,
         title: 'Setting',
-        headerLeft: () => (
-          <TouchableOpacity style={{paddingLeft: 20}}>
-            <Ionicons
-              name="arrow-back"
-              size={25}
-              style={[{color: 'black'}]}
-              onPress={() => navigation.goBack()}
-            />
-          </TouchableOpacity>
-        ),
+        // headerLeft: () => (
+        //   <TouchableOpacity style={{paddingLeft: 20}}>
+        //     <Ionicons
+        //       name="arrow-back"
+        //       size={25}
+        //       style={[{color: 'black'}]}
+        //       onPress={() => navigation.goBack()}
+        //     />
+        //   </TouchableOpacity>
+        // ),
       }}
     />
   </Drawer.Navigator>

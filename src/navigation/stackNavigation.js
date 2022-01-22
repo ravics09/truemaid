@@ -7,6 +7,7 @@ Ionicons.loadFont().then(); // To avoid 'Unrecognized font family ionicons' Warn
 import NavigationString from './../constant/navigationString';
 
 import {
+  Home,
   SignIn,
   SignUp,
   Launch,
@@ -20,8 +21,6 @@ import {
   Message,
   Chat,
 } from './../screens';
-
-import BottomTab from './bottomTab';
 import SideDrawer from './sideDrawer';
 
 const Stack = createNativeStackNavigator();
@@ -48,17 +47,46 @@ const AuthStack = () => (
 
 const MainStack = () => (
   <Stack.Navigator screenOptions={{headerShown: false}}>
-    <Stack.Screen name="BottomTab" component={BottomTab} />
+    <Stack.Screen name="sideDrawer" component={SideDrawer} />
   </Stack.Navigator>
 );
 
 const HomeStack = ({navigation}) => (
-  <Stack.Navigator initialRouteName="Home">
+  <Stack.Navigator
+    initialRouteName="Home"
+    screenOptions={{
+      headerShown: true,
+      headerStyle: {backgroundColor: 'white'},
+      headerTintColor: 'black',
+      headerTitleStyle: {fontWeight: 'bold'},
+      headerBackTitle: 'back',
+    }}>
     <Stack.Screen
       name="Home"
-      component={SideDrawer}
+      component={Home}
       options={() => ({
-        headerShown: false,
+        title: 'True Maid',
+        headerShown: true,
+        headerLeft: () => (
+          <TouchableOpacity>
+            <Ionicons
+              name="menu"
+              size={25}
+              style={[{color: 'black'}]}
+              onPress={() => navigation.toggleDrawer()}
+            />
+          </TouchableOpacity>
+        ),
+        headerRight: () => (
+          <TouchableOpacity>
+            <Ionicons
+              name="notifications"
+              size={25}
+              style={[{color: 'black', paddingRight: 15}]}
+              onPress={() => navigation.navigate('Notification')}
+            />
+          </TouchableOpacity>
+        ),
       })}
     />
     <Stack.Screen
@@ -67,7 +95,7 @@ const HomeStack = ({navigation}) => (
       options={() => ({
         title: 'Maid Details',
         headerLeft: () => (
-          <TouchableOpacity style={{paddingLeft: 20}}>
+          <TouchableOpacity>
             <Ionicons
               name="arrow-back"
               size={25}
@@ -85,21 +113,36 @@ const ProfileStack = ({navigation}) => (
   <Stack.Navigator
     initialRouteName="Profile"
     screenOptions={{
-      title: 'True Maid',
       headerShown: true,
       headerStyle: {backgroundColor: 'white'},
       headerTintColor: 'black',
       headerTitleStyle: {fontWeight: 'bold'},
       headerBackTitle: 'back',
     }}>
-    <Stack.Screen name="Profile" component={Profile} />
+    <Stack.Screen
+      name="Profile"
+      component={Profile}
+      options={{
+        title: 'Profile',
+        headerLeft: () => (
+          <TouchableOpacity>
+            <Ionicons
+              name="menu"
+              size={25}
+              style={[{color: 'black'}]}
+              onPress={() => navigation.toggleDrawer()}
+            />
+          </TouchableOpacity>
+        ),
+      }}
+    />
     <Stack.Screen
       name="EditProfile"
       component={EditProfile}
       options={() => ({
         title: 'Edit Profile',
         headerLeft: () => (
-          <TouchableOpacity style={{paddingLeft: 20}}>
+          <TouchableOpacity>
             <Ionicons
               name="arrow-back"
               size={25}
@@ -116,7 +159,7 @@ const ProfileStack = ({navigation}) => (
       options={() => ({
         title: 'Edit Maid Details',
         headerLeft: () => (
-          <TouchableOpacity style={{paddingLeft: 20}}>
+          <TouchableOpacity>
             <Ionicons
               name="arrow-back"
               size={25}
@@ -133,7 +176,7 @@ const ProfileStack = ({navigation}) => (
       options={() => ({
         title: 'Edit Profile Photo',
         headerLeft: () => (
-          <TouchableOpacity style={{paddingLeft: 20}}>
+          <TouchableOpacity>
             <Ionicons
               name="arrow-back"
               size={25}
@@ -150,7 +193,7 @@ const ProfileStack = ({navigation}) => (
       options={() => ({
         title: 'Update Password',
         headerLeft: () => (
-          <TouchableOpacity style={{paddingLeft: 20}}>
+          <TouchableOpacity>
             <Ionicons
               name="arrow-back"
               size={25}
@@ -168,21 +211,36 @@ const ListedStack = ({navigation}) => (
   <Stack.Navigator
     initialRouteName="Listed"
     screenOptions={{
-      title: 'True Maid',
       headerShown: true,
       headerStyle: {backgroundColor: 'white'},
       headerTintColor: 'black',
       headerTitleStyle: {fontWeight: 'bold'},
       headerBackTitle: 'back',
     }}>
-    <Stack.Screen name="Listed" component={Listed} />
+    <Stack.Screen
+      name="Listed"
+      component={Listed}
+      options={{
+        title: 'Listed Maid ',
+        headerLeft: () => (
+          <TouchableOpacity>
+            <Ionicons
+              name="menu"
+              size={25}
+              style={[{color: 'black'}]}
+              onPress={() => navigation.toggleDrawer()}
+            />
+          </TouchableOpacity>
+        ),
+      }}
+    />
     <Stack.Screen
       name="MaidDetail"
       component={MaidDetail}
       options={() => ({
         title: 'Maid Detail',
         headerLeft: () => (
-          <TouchableOpacity style={{paddingLeft: 20}}>
+          <TouchableOpacity>
             <Ionicons
               name="arrow-back"
               size={25}
@@ -200,21 +258,36 @@ const MessageStack = ({navigation}) => (
   <Stack.Navigator
     initialRouteName="Messages"
     screenOptions={{
-      title: 'True Maid',
       headerShown: true,
       headerStyle: {backgroundColor: 'white'},
       headerTintColor: 'black',
       headerTitleStyle: {fontWeight: 'bold'},
       headerBackTitle: 'back',
     }}>
-    <Stack.Screen name="Messages" component={Message} />
+    <Stack.Screen
+      name="Messages"
+      component={Message}
+      options={{
+        title: 'Messages',
+        headerLeft: () => (
+          <TouchableOpacity>
+            <Ionicons
+              name="menu"
+              size={25}
+              style={[{color: 'black'}]}
+              onPress={() => navigation.toggleDrawer()}
+            />
+          </TouchableOpacity>
+        ),
+      }}
+    />
     <Stack.Screen
       name="Chat"
       component={Chat}
       options={() => ({
         title: 'Chat',
         headerLeft: () => (
-          <TouchableOpacity style={{paddingLeft: 20}}>
+          <TouchableOpacity>
             <Ionicons
               name="arrow-back"
               size={25}

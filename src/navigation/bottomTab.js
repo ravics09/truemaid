@@ -6,7 +6,6 @@ import { DrawerActions} from '@react-navigation/native';
 const BottomTabs = createBottomTabNavigator();
 
 import * as NavStack from './stackNavigation';
-import SideDrawer from './sideDrawer';
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
 Ionicons.loadFont().then(); // To avoid 'Unrecognized font family ionicons' Warning
