@@ -418,7 +418,7 @@ const Home = ({navigation}) => {
     }
 
     return (
-      <TouchableOpacity key={index} onPress={item => openMaidDetails(item)}>
+      <TouchableOpacity key={index} onPress={() => openMaidDetails(item)}>
         <View style={[styles.card, styles.shadowProp]}>
           <Image
             source={profilePic ? {uri: profilePic} : null}
@@ -473,6 +473,7 @@ const Home = ({navigation}) => {
   };
 
   const openMaidDetails = item => {
+    console.log("items value to pass",item);
     navigation.navigate('MaidDetail', {maidDetails: item});
   };
 
