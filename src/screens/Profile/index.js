@@ -14,28 +14,34 @@ const Profile = ({navigation}) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log("maidData on profile ====",maidData);
-    if(user.isMaid && !maidData._id){
-      fetchMaidData(user.maidId);
+    let isSubscribed = true;
+    async function fetchMaidData(maidId) {
+      await MaidService.fetchMaid(maidId).then(res => {
+        if (isSubscribed) {
+          Storage.setItem('trueMaidMaid', JSON.stringify(res.maid));
+          dispatch({
+            type: MAID_UPDATE_SUCCESS,
+            payload: {maid: res.maid},
+          });
+        }
+      });
     }
 
-    async function fetchMaidData(maidId){
-      await MaidService.fetchMaid(maidId).then(res=>{
-        console.log("got response from fetch api",res);
-        Storage.setItem('trueMaidMaid', JSON.stringify(res.maid));
-        dispatch({
-          type: MAID_UPDATE_SUCCESS,
-          payload: {maid: res.maid},
-        });
-      })
+    if (user) {
+      if (user.isMaid && !maidData._id) {
+        fetchMaidData(user.maidId);
+      }
     }
-  },[user])
+    return () => (isSubscribed = false);
+  }, [user]);
 
   return (
     <>
       <View style={styles.header}>
         <View style={styles.headerSections}>
-          <Text style={styles.headerTitle}>Welcome back {user.userName}</Text>
+          <Text style={styles.headerTitle}>
+            Welcome back {user ? user.userName : null}
+          </Text>
           <Text style={styles.headerSubTitle}>
             here are your TrueMaid membership details-
           </Text>

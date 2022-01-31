@@ -3,6 +3,7 @@ import {
   SIGNIN_SUCCESS,
   SIGNIN_FAIL,
   SIGNUP_FAIL,
+  SIGNOUT ,
   USER_UPDATE_SUCCESS,
   USER_UPDATE_FAIL,
   UPDATE_PHOTO_SUCCESS,
@@ -12,7 +13,7 @@ import Storage from '../utils/storage';
 
 const user = Storage.getItem('trueMaidUser');
 const initialState = user
-  ? {isLoggedIn: true, user}
+  ? {isLoggedIn: false, user}
   : {isLoggedIn: false, user: null};
 
 export default auth = (state = initialState, action) => {
@@ -22,7 +23,6 @@ export default auth = (state = initialState, action) => {
     case SIGNUP_SUCCESS:
       return {
         ...state,
-        ...initialState,
         isLoggedIn: false,
       };
     case SIGNUP_FAIL:
@@ -33,7 +33,6 @@ export default auth = (state = initialState, action) => {
     case SIGNIN_SUCCESS:
       return {
         ...state,
-        ...initialState,
         isLoggedIn: true,
         user: payload.user,
       };
@@ -46,7 +45,6 @@ export default auth = (state = initialState, action) => {
     case USER_UPDATE_SUCCESS:
       return {
         ...state,
-        ...initialState,
         user: payload.user,
       };
     case USER_UPDATE_FAIL:
@@ -56,12 +54,17 @@ export default auth = (state = initialState, action) => {
       case UPDATE_PHOTO_SUCCESS:
       return {
         ...state,
-        ...initialState,
         user: payload.user,
       };
     case UPDATE_PHOTO_FAIL:
       return {
         ...state,
+      };
+    case SIGNOUT :
+      console.log("SIGNOUT CALLED");
+      return{
+        state: {},
+        isLoggedIn: false
       };
     default:
       return state;

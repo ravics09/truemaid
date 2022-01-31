@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react';
-import 'react-native-gesture-handler';
 import {useSelector} from 'react-redux';
 import {NavigationContainer, DefaultTheme} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
@@ -48,7 +47,7 @@ const SwitchNavigation = (isFirstTimeLaunch, isLoggedIn) => {
     case false:
       return (
         <NavigationContainer theme={MyTheme}>
-          {isLoggedIn ? (
+          {isLoggedIn===true ? (
             <Stack.Navigator headerMode="none">
               <Stack.Screen
                 name="MainStack"
@@ -81,11 +80,14 @@ const GlobalNavigator = () => {
   const {isLoggedIn} = useSelector(state => state.auth);
 
   useEffect(() => {
+    console.log("isLoggedIn value==",isLoggedIn);
     AsyncStorage.getItem('alreadyLaunched').then(value => {
       if (value == null) {
+        console.log("App launched for first time");
         AsyncStorage.setItem('alreadyLaunched', 'true');
         setIsFirstTimeLaunch(true);
       } else {
+        console.log("App launched for second time");
         setIsFirstTimeLaunch(false);
       }
     });

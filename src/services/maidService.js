@@ -77,7 +77,7 @@ const fetchMaid  = id => {
 const fetchAllMaid = () => {
   return axiosObject.get(`/getallmaids`).then(
     response => {
-      console.log("fetch details of all maids",response.data.maids);
+      // console.log("fetch details of all maids",response.data.maids);
       if (response.data.status === 200) {
         return {
           status: 'success',

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect, useRef}  from 'react';
 import {useDispatch} from 'react-redux';
 import {
   View,
@@ -18,8 +18,18 @@ const SignIn = ({navigation}) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setLoading] = useState(false);
+  const isMounted = useRef(null);
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    // executed when component mounted
+    isMounted.current = true;
+    return () => {
+      // executed when unmount
+      isMounted.current = false;
+    }
+  }, []);
 
   const onSignIn = () => {
     setIsSubmit(true);
@@ -33,16 +43,19 @@ const SignIn = ({navigation}) => {
     dispatch(signin(user))
       .then(response => {
         if (response.status === 'success') {
-          setTimeout(() => {
-            setLoading(false);
-            navigation.replace('MainStack');
-          }, 3000);
+          setLoading(false);
+          navigation.replace('MainStack');
         }
       })
       .catch(() => {
         setLoading(false);
         navigation.replace('Auth');
-      });
+      })
+      .finally(() => {
+        if (isMounted.current) {
+          setLoading(false)
+        }
+     });
   };
 
   return (

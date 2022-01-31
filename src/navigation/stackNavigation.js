@@ -1,5 +1,4 @@
 import React from 'react';
-import 'react-native-gesture-handler';
 import {TouchableOpacity} from 'react-native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Ionicons from 'react-native-vector-icons/Ionicons';

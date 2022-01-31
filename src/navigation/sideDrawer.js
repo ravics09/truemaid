@@ -1,5 +1,4 @@
 import React from 'react';
-import 'react-native-gesture-handler';
 import {TouchableOpacity} from 'react-native';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 const Drawer = createDrawerNavigator();
@@ -7,13 +6,21 @@ const Drawer = createDrawerNavigator();
 import Ionicons from 'react-native-vector-icons/Ionicons';
 Ionicons.loadFont().then();
 
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+MaterialIcons.loadFont().then();
+
 import {AboutUs, Privacy, Setting, Notification} from './../screens';
+import CustomDrawer from '../components/customDrawer';
 import BottomTab from './bottomTab';
 
-const SideDrawer = ({navigation}) => (
+const SideDrawer = () => (
   <Drawer.Navigator
+    drawerContent={props => <CustomDrawer {...props}/>}
     screenOptions={{
       drawerType: 'front',
+      drawerActiveBackgroundColor: '#181D3D',
+      drawerActiveTintColor: '#fff',
+      drawerInactiveTintColor: '#333',
       drawerStyle: {
         backgroundColor: '#ffff',
         width: 240,
@@ -24,7 +31,10 @@ const SideDrawer = ({navigation}) => (
       component={BottomTab}
       options={() => ({
         drawerLabel: 'True Maid',
-        headerShown: false
+        headerShown: false,
+        drawerIcon: ({color}) => (
+          <Ionicons name="home-outline" size={22} color={color} />
+        ),
       })}
     />
     <Drawer.Screen
@@ -34,6 +44,9 @@ const SideDrawer = ({navigation}) => (
         drawerLabel: 'About Us',
         headerShown: true,
         title: 'About Us',
+        drawerIcon: ({color}) => (
+          <Ionicons name="people" size={22} color={color} />
+        ),
         // headerLeft: () => (
         //   <TouchableOpacity style={{paddingLeft: 20}}>
         //     <Ionicons
@@ -50,6 +63,9 @@ const SideDrawer = ({navigation}) => (
       name="Privacy"
       component={Privacy}
       options={{
+        drawerIcon: ({color}) => (
+          <MaterialIcons name="privacy-tip" size={22} color={color} />
+        ),
         drawerLabel: 'Privacy',
         headerShown: true,
         title: 'Privacy',
@@ -91,6 +107,9 @@ const SideDrawer = ({navigation}) => (
         drawerLabel: 'Setting',
         headerShown: true,
         title: 'Setting',
+        drawerIcon: ({color}) => (
+          <Ionicons name="settings-outline" size={22} color={color} />
+        ),
         // headerLeft: () => (
         //   <TouchableOpacity style={{paddingLeft: 20}}>
         //     <Ionicons

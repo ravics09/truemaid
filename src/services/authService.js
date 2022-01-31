@@ -55,16 +55,29 @@ const signUp = user => {
 };
 
 const signOut = async () => {
-  const asyncStorageKeys = await Storage.getAllKeys();
-  if (asyncStorageKeys.length > 0) {
-    if (Platform.OS === 'android') {
-      await Storage.removeAll();
-    }
-    if (Platform.OS === 'ios') {
-      await Storage.multiRemove(asyncStorageKeys);
-    }
-  }
-  return true;
+  await Storage.removeItem('trueMaidUser');
+  await Storage.removeItem('accessToken');
+  return {
+    status: 'success'
+  };
+
+  // const asyncStorageKeys = await Storage.getAllKeys();
+  // if (asyncStorageKeys.length > 0) {
+  //   if (Platform.OS === 'android') {
+  //     await Storage.removeAll();
+  //     console.log("storage info removed from android device");
+  //     return {
+  //       status: 'success'
+  //     };
+  //   }
+  //   if (Platform.OS === 'ios') {
+  //     await Storage.multiRemove(asyncStorageKeys);
+  //     console.log("storage info removed from ios device");
+  //     return {
+  //       status: 'success'
+  //     };
+  //   }
+  // }
 };
 
 export default {

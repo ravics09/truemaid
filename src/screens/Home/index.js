@@ -380,14 +380,19 @@ const Home = ({navigation}) => {
   const [maidData, setMaidData] = useState([]);
 
   useEffect(() => {
+    let isSubscribed = true;
+
     async function fetchAllMaidDetails() {
       await MaidService.fetchAllMaid().then(res => {
-        setFilterMaidData(res.maids);
-        setMaidData(res.maids);
+        if(isSubscribed){
+          setFilterMaidData(res.maids);
+          setMaidData(res.maids);
+        }
       });
     }
     fetchAllMaidDetails();
     setCategoryData(categoryData);
+    return () => (isSubscribed =  false);
   }, [maidData]); //  maidData update instantly on screen load but filter caused issue.
 
   const renderHorizontalList = ({item}) => {

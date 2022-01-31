@@ -10,13 +10,14 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 // the reducers themselves are not persisted since they are just functions.
 import rootReducer from './reducers/index';
 
-const appReducer = (state, action) => {
-  if (action.type === 'SIGNOUT') {
-    state = {};
-  }
+// const appReducer = (state, action) => {
+//   if (action.type === 'SIGNOUT') {
+//     console.log("Signout action called");
+//     state = {};
+//   }
 
-  return rootReducer(state, action)
-}
+//   return rootReducer(state, action)
+// }
 
 const middleware = [thunk];
 const persistConfig = {
@@ -24,7 +25,7 @@ const persistConfig = {
   storage: AsyncStorage
 };
 
-const persistedReducer = persistReducer(persistConfig, appReducer);
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 // const storeWithMiddleware = applyMiddleware(promiseMiddleware)(createStore);
 

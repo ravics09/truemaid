@@ -64,11 +64,22 @@ export const signin = user => dispatch => {
 };
 
 export const signout = () => dispatch => {
-  AuthService.signOut();
+  return AuthService.signOut().then(response => {
+    if (response.status === 'success') {
+      dispatch({
+        type: SIGNOUT,
+      });
 
-  dispatch({
-    type: SIGNOUT,
-  });
+      Promise.resolve();
+      return response;
+    }
+  },
+  error => {
+    const message = error.toString();
+
+    Promise.reject();
+    return message;
+  },);
 };
 
 export const editprofile = user => dispatch => {
