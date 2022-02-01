@@ -7,14 +7,15 @@ const styles = StyleSheet.create({
     padding: 15,
   },
   imageContainer:{
-    flex:1,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    
   },
   userImage: {
-    width: '100%',
-    height: '100%',
-    // borderRadius: 50
+    width: 200,
+    height: 200,
+    borderRadius: 100,
+    marginBottom:10
   },
   headerTitle: {
     textAlign: 'center',
@@ -47,6 +48,16 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     paddingVertical: 5,
+  },
+  customButton:{
+    backgroundColor: 'white',
+    borderWidth: 1,
+    borderColor: 'white',
+    borderRadius: 20,
+  },
+  buttonContainer: {
+    width: '100%',
+    marginVertical: 10
   },
 });
 

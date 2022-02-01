@@ -3,11 +3,13 @@ import {
   SIGNIN_SUCCESS,
   SIGNIN_FAIL,
   SIGNUP_FAIL,
-  SIGNOUT ,
+  SIGNOUT,
   USER_UPDATE_SUCCESS,
   USER_UPDATE_FAIL,
   UPDATE_PHOTO_SUCCESS,
-  UPDATE_PHOTO_FAIL
+  UPDATE_PHOTO_FAIL,
+  MAID_ADDED_TO_LIST_SUCCESS,
+  MAID_ADDED_TO_LIST_FAIL,
 } from '../actions/type';
 import Storage from '../utils/storage';
 
@@ -51,7 +53,7 @@ export default auth = (state = initialState, action) => {
       return {
         ...state,
       };
-      case UPDATE_PHOTO_SUCCESS:
+    case UPDATE_PHOTO_SUCCESS:
       return {
         ...state,
         user: payload.user,
@@ -60,11 +62,20 @@ export default auth = (state = initialState, action) => {
       return {
         ...state,
       };
-    case SIGNOUT :
-      console.log("SIGNOUT CALLED");
-      return{
+    case MAID_ADDED_TO_LIST_SUCCESS:
+      return {
+        ...state,
+        user: payload.user,
+      };
+    case MAID_ADDED_TO_LIST_FAIL:
+      return {
+        ...state,
+      };
+    case SIGNOUT:
+      console.log('SIGNOUT CALLED');
+      return {
         state: {},
-        isLoggedIn: false
+        isLoggedIn: false,
       };
     default:
       return state;

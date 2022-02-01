@@ -105,6 +105,23 @@ const HomeStack = ({navigation}) => (
         ),
       })}
     />
+    <Stack.Screen
+      name="Chat"
+      component={Chat}
+      options={() => ({
+        title: 'Chat',
+        headerLeft: () => (
+          <TouchableOpacity>
+            <Ionicons
+              name="arrow-back"
+              size={25}
+              style={[{color: 'black'}]}
+              onPress={() => navigation.goBack()}
+            />
+          </TouchableOpacity>
+        ),
+      })}
+    />
   </Stack.Navigator>
 );
 

@@ -7,7 +7,9 @@ import {
   USER_UPDATE_SUCCESS,
   USER_UPDATE_FAIL,
   UPDATE_PHOTO_SUCCESS,
-  UPDATE_PHOTO_FAIL
+  UPDATE_PHOTO_FAIL,
+  MAID_ADDED_TO_LIST_SUCCESS,
+  MAID_ADDED_TO_LIST_FAIL,
 } from './type';
 import AuthService from '../services/authService';
 import UserService from '../services/userService';
@@ -19,7 +21,7 @@ export const signup = user => dispatch => {
         dispatch({
           type: SIGNUP_SUCCESS,
         });
-  
+
         Promise.resolve();
         return response;
       }
@@ -64,22 +66,24 @@ export const signin = user => dispatch => {
 };
 
 export const signout = () => dispatch => {
-  return AuthService.signOut().then(response => {
-    if (response.status === 'success') {
-      dispatch({
-        type: SIGNOUT,
-      });
+  return AuthService.signOut().then(
+    response => {
+      if (response.status === 'success') {
+        dispatch({
+          type: SIGNOUT,
+        });
 
-      Promise.resolve();
-      return response;
-    }
-  },
-  error => {
-    const message = error.toString();
+        Promise.resolve();
+        return response;
+      }
+    },
+    error => {
+      const message = error.toString();
 
-    Promise.reject();
-    return message;
-  },);
+      Promise.reject();
+      return message;
+    },
+  );
 };
 
 export const editprofile = user => dispatch => {
@@ -132,4 +136,37 @@ export const updatephoto = (user, id) => dispatch => {
       return message;
     },
   );
-}
+};
+
+export const addtolistedmaid = user => dispatch => {
+  return UserService.addToListedMaid(user).then(
+    response => {
+      if (response.status === 'success') {
+        dispatch({
+          type: MAID_ADDED_TO_LIST_SUCCESS,
+          payload: {user: response.user},
+        });
+
+        Promise.resolve();
+        return response;
+      } else if (response.status === 'repeated') {
+        dispatch({
+          type: MAID_ADDED_TO_LIST_FAIL,
+        });
+
+        Promise.resolve();
+        return response;
+      }
+    },
+    error => {
+      const message = error.toString();
+
+      dispatch({
+        type: MAID_ADDED_TO_LIST_FAIL,
+      });
+
+      Promise.reject();
+      return message;
+    },
+  );
+};

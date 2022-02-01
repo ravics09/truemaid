@@ -1,16 +1,51 @@
 import React, {useState, useEffect} from 'react';
-import {View, Text, ScrollView, Image} from 'react-native';
+import {View, Text, ScrollView, Image, ActivityIndicator} from 'react-native';
+import {useSelector, useDispatch} from 'react-redux';
+import {Button} from 'react-native-elements';
+import {addtolistedmaid} from './../../actions/auth';
 import styles from './styles';
 
-const MaidDetail = ({route}) => {
+const MaidDetail = ({navigation, route}) => {
   const {maidDetails} = route.params;
   const [maidData, setMaidData] = useState([]);
   const [maidFullData, setMaidFullData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const {user} = useSelector(state => state.auth);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     setMaidFullData(maidDetails);
     setMaidData(maidDetails.userInfo);
   }, []);
+
+  onSave = maidId => {
+    setIsLoading(true);
+    const {_id} = user;
+    console.log('you are saving maidId with id', maidId);
+    const updatedUserInfo = {
+      id: user._id,
+      maidId,
+    };
+
+    dispatch(addtolistedmaid(updatedUserInfo))
+      .then(response => {
+        if (response.status === 'success') {
+          setTimeout(() => {
+            setIsLoading(false);
+            alert('Maid Successfully Added to Listed Section');
+          }, 3000);
+        } else if(response.status === 'repeated'){
+          setTimeout(() => {
+            setIsLoading(false);
+            alert('Maid Already Added in the list!');
+          }, 3000);
+        }
+      })
+      .catch(() => {
+        setIsLoading(false);
+        alert('Somthing is wrong');
+      });
+  };
 
   if (maidData.profilePhoto) {
     var imgstr = maidData.profilePhoto;
@@ -19,39 +54,65 @@ const MaidDetail = ({route}) => {
   }
 
   return (
-    <View style={styles.container}>
-        <View style={styles.imageContainer}>
-          <Image
-            source={profilePic ? {uri: profilePic} : null}
-            style={styles.userImage}
-          />
+    <>
+      {isLoading ? (
+        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+          <ActivityIndicator size="large" color="orange" />
         </View>
-        <View style={styles.basicInfo}>
-          <Text style={styles.headerTitle}>Basic Info</Text>
-          <Text style={styles.subTitle}>Name: {maidData.fullName}</Text>
-          <Text style={styles.subTitle}>Mobile: {maidData.mobile}</Text>
-          <Text style={styles.subTitle}>City: {maidData.city}</Text>
-          <Text style={styles.subTitle}>State: {maidData.stateInfo}</Text>
-        </View>
+      ) : (
+        <View style={styles.container}>
+          <View style={styles.imageContainer}>
+            <Image
+              source={profilePic ? {uri: profilePic} : null}
+              style={styles.userImage}
+            />
+            <Text style={styles.headerTitle}>{maidData.fullName}</Text>
+          </View>
+          <ScrollView style={{flex: 1}}>
+            <View style={styles.basicInfo}>
+              <Text style={styles.headerTitle}>Location Info</Text>
+              <Text style={styles.subTitle}>City: {maidData.city}</Text>
+              <Text style={styles.subTitle}>Pincode: {maidData.pincode}</Text>
+              <Text style={styles.subTitle}>State: {maidData.stateInfo}</Text>
+            </View>
 
-        <View style={styles.advanceInfo}>
-          <Text style={styles.headerTitle}>Other Info</Text>
-          <Text style={styles.subTitle}>Salary: {maidFullData.salary}</Text>
-          <Text style={styles.subTitle}>
-            Status: {maidFullData.aadhar ? 'Verified' : 'Not Verified'}
-          </Text>
-          <Text style={styles.subTitle}>
-            Experience: {maidFullData.experience} Year
-          </Text>
-          <Text style={styles.subTitle}>Field: {maidFullData.field}</Text>
-          <Text style={styles.subTitle}>
-            Languages: {maidFullData.languages}
-          </Text>
-          <Text style={styles.subTitle}>
-            Available On: {maidFullData.availabilityDate}
-          </Text>
+            <View style={styles.advanceInfo}>
+              <Text style={styles.headerTitle}>Other Info</Text>
+              <Text style={styles.subTitle}>Salary: {maidFullData.salary}</Text>
+              <Text style={styles.subTitle}>
+                Status: {maidFullData.aadhar ? 'Verified' : 'Not Verified'}
+              </Text>
+              <Text style={styles.subTitle}>
+                Experience: {maidFullData.experience} Year
+              </Text>
+              <Text style={styles.subTitle}>Field: {maidFullData.field}</Text>
+              <Text style={styles.subTitle}>
+                Languages: {maidFullData.languages}
+              </Text>
+              <Text style={styles.subTitle}>
+                Available On: {maidFullData.availabilityDate}
+              </Text>
+            </View>
+
+            <Button
+              title="Save"
+              onPress={() => onSave(maidFullData._id)}
+              buttonStyle={styles.customButton}
+              containerStyle={styles.buttonContainer}
+              titleStyle={{fontWeight: 'bold', color: '#181D3D'}}
+            />
+
+            <Button
+              title="Start Chat"
+              onPress={() => navigation.navigate('Chat')}
+              buttonStyle={styles.customButton}
+              containerStyle={styles.buttonContainer}
+              titleStyle={{fontWeight: 'bold', color: '#181D3D'}}
+            />
+          </ScrollView>
         </View>
-    </View>
+      )}
+    </>
   );
 };
 

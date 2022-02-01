@@ -473,7 +473,6 @@ const Home = ({navigation}) => {
   };
 
   const openMaidDetails = item => {
-    console.log("items value to pass",item);
     navigation.navigate('MaidDetail', {maidDetails: item});
   };
 

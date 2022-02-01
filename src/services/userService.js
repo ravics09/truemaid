@@ -88,10 +88,41 @@ const updatePhoto = (user, id) => {
   );
 };
 
+const addToListedMaid = user => {
+  return axiosObject.put(`/addtolistedmaid/${user.id}`, user).then(
+    response => {
+      if (response.data.status === 200) {
+        return {
+          status: 'success',
+          message: 'Maid Added to listed section!',
+          user: response.data.user,
+        };
+      } else if(response.data.status === 400){
+        console.log("Maid already added");
+        return {
+          status: 'repeated',
+          message: 'Maid Already Added in the list!',
+          user: response.data.user,
+        };
+      }
+    },
+    error => {
+      if (error.response.status === 400) {
+        return {
+          status: 'repeated',
+          message: 'Maid Already Added in the list!'
+        };
+      } else {
+        return {status: 'failed', message: 'Server Not Responding'};
+      }
+    },
+  );
+};
 
 export default {
   getProfile,
   editProfile,
   updatePassword,
-  updatePhoto
+  updatePhoto,
+  addToListedMaid,
 };

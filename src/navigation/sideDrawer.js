@@ -13,7 +13,7 @@ import {AboutUs, Privacy, Setting, Notification} from './../screens';
 import CustomDrawer from '../components/customDrawer';
 import BottomTab from './bottomTab';
 
-const SideDrawer = () => (
+const SideDrawer = ({navigation}) => (
   <Drawer.Navigator
     drawerContent={props => <CustomDrawer {...props}/>}
     screenOptions={{
