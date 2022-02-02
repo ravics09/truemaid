@@ -119,10 +119,35 @@ const addToListedMaid = user => {
   );
 };
 
+const removeFromListedMaid = user => {
+  return axiosObject.put(`/removefromlistedmaid/${user.id}`, user).then(
+    response => {
+      if (response.data.status === 200) {
+        return {
+          status: 'success',
+          message: 'Maid Successfully Removed From The List!',
+          user: response.data.user,
+        };
+      }
+    },
+    error => {
+      if (error.response.status === 400) {
+        return {
+          status: 'Failed',
+          message: 'Maid Not Exist In The List'
+        };
+      } else {
+        return {status: 'failed', message: 'Server Not Responding'};
+      }
+    },
+  );
+};
+
 export default {
   getProfile,
   editProfile,
   updatePassword,
   updatePhoto,
   addToListedMaid,
+  removeFromListedMaid
 };

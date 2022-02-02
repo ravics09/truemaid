@@ -9,7 +9,6 @@ import MaidService from '../services/maidService';
 export const createmaid = user => dispatch => {
   return MaidService.createMaid(user).then(
     response => {
-      console.log('=====create maid response from backend=====', response.maid);
       if (response.status === 'success') {
         dispatch({
           type: MAID_CREATE_SUCCESS,

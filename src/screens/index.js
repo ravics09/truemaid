@@ -15,3 +15,4 @@ export {default as Chat} from './Chat/index';
 export {default as AboutUs} from './About/index';
 export {default as Notification} from './Notification/index';
 export {default as Privacy} from './Privacy/index';
+export {default as ListedMaidDetail} from './ListedMaidDetail/index';

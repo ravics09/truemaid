@@ -21,13 +21,9 @@ const EditMaidDetails = () => {
   const [isMaidExist, setIsMaidExist] = useState(false);
   const {maidData} = useSelector(state => state.maid);
   const {user} = useSelector(state => state.auth);
-  // const [userInfo, setUserInfo] = useState();
   const dispatch = useDispatch();
 
   useEffect(() => {
-
-    console.log('========maid info at edit maid details screen========', maidData);
-    console.log('========user info at edit maid details screen========', user);
     const {
       aadhar,
       experience,

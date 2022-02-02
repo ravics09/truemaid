@@ -19,6 +19,7 @@ import {
   MaidDetail,
   Message,
   Chat,
+  ListedMaidDetail,
 } from './../screens';
 import SideDrawer from './sideDrawer';
 
@@ -116,7 +117,7 @@ const HomeStack = ({navigation}) => (
               name="arrow-back"
               size={25}
               style={[{color: 'black'}]}
-              onPress={() => navigation.goBack()}
+              onPress={() => navigation.pop()}
             />
           </TouchableOpacity>
         ),
@@ -251,8 +252,8 @@ const ListedStack = ({navigation}) => (
       }}
     />
     <Stack.Screen
-      name="MaidDetail"
-      component={MaidDetail}
+      name="ListedMaidDetail"
+      component={ListedMaidDetail}
       options={() => ({
         title: 'Maid Detail',
         headerLeft: () => (
@@ -262,6 +263,23 @@ const ListedStack = ({navigation}) => (
               size={25}
               style={[{color: 'black'}]}
               onPress={() => navigation.navigate('Listed')}
+            />
+          </TouchableOpacity>
+        ),
+      })}
+    />
+    <Stack.Screen
+      name="Chat"
+      component={Chat}
+      options={() => ({
+        title: 'Chat',
+        headerLeft: () => (
+          <TouchableOpacity>
+            <Ionicons
+              name="arrow-back"
+              size={25}
+              style={[{color: 'black'}]}
+              onPress={() => navigation.pop()}
             />
           </TouchableOpacity>
         ),

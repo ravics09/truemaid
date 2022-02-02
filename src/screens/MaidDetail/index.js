@@ -18,13 +18,13 @@ const MaidDetail = ({navigation, route}) => {
     setMaidData(maidDetails.userInfo);
   }, []);
 
-  onSave = maidId => {
+  onSave = (maidId, maidName, maidSalary) => {
     setIsLoading(true);
-    const {_id} = user;
-    console.log('you are saving maidId with id', maidId);
     const updatedUserInfo = {
       id: user._id,
       maidId,
+      maidName, 
+      maidSalary,
     };
 
     dispatch(addtolistedmaid(updatedUserInfo))
@@ -95,8 +95,8 @@ const MaidDetail = ({navigation, route}) => {
             </View>
 
             <Button
-              title="Save"
-              onPress={() => onSave(maidFullData._id)}
+              title="Add To List"
+              onPress={() => onSave(maidFullData._id, maidData.fullName, maidFullData.salary)}
               buttonStyle={styles.customButton}
               containerStyle={styles.buttonContainer}
               titleStyle={{fontWeight: 'bold', color: '#181D3D'}}
