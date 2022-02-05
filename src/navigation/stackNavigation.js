@@ -318,8 +318,8 @@ const MessageStack = ({navigation}) => (
     <Stack.Screen
       name="Chat"
       component={Chat}
-      options={() => ({
-        title: 'Chat',
+      options={({route}) => ({
+        title: route.params.maidName,
         headerLeft: () => (
           <TouchableOpacity>
             <Ionicons
