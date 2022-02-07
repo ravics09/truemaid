@@ -49,10 +49,20 @@ const Listed = ({navigation}) => {
   };
 
   const renderMaidList = ({item}) => {
-    console.log('item maid id', item._id);
+    console.log("maid listed ",item);
+    // if (item.userInfo.profilePhoto) {
+    //   var imgstr = item.userInfo.profilePhoto;
+    //   imgstr = imgstr.replace('public', '');
+    //   var profilePic = 'http://localhost:9090' + imgstr;
+    // }
+
     return (
       <TouchableOpacity onPress={() => openMaidDetails(item.maidId)}>
-        <View key={item.key} style={styles.renderItem}>
+        <View key={item.key} style={[styles.card, styles.shadowProp]}>
+        {/* <Image
+            source={profilePic ? {uri: profilePic} : null}
+            style={{width: 60, height: 60, borderRadius: 50}}
+          /> */}
           <View>
             <Text style={styles.title}>{item.maidName}</Text>
             <Text style={styles.subTitle}>Salary: {item.maidSalary}</Text>
@@ -63,7 +73,7 @@ const Listed = ({navigation}) => {
               onPress={() => onRemoveMaid(item._id)}
               buttonStyle={styles.customButton}
               containerStyle={styles.buttonContainer}
-              titleStyle={{fontWeight: 'bold', color: '#181D3D'}}
+              titleStyle={{fontWeight: 'bold', color: 'white'}}
             />
           </View>
         </View>

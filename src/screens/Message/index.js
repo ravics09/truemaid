@@ -37,94 +37,46 @@ const messageData = [
       },
     ],
   },
-  //   {
-  //     name: 'rohit verma',
-  //     picture: fanette,
-  //     message: [
-  //       {
-  //         date: new Date(),
-  //         sent: [{text: 'Hi Maid, How are you ?'}],
-  //         received: [{text: 'I am fine'}],
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     name: 'ravi Sharma',
-  //     picture: alexs,
-  //     message: [
-  //       {
-  //         date: new Date(),
-  //         sent: [{text: 'Hi Maid, How are you ?'}],
-  //         received: [{text: 'I am fine'}],
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     name: 'kirti Sharma',
-  //     picture: pragati,
-  //     message: [
-  //       {
-  //         date: new Date(),
-  //         sent: [{text: 'Hi Maid, How are you ?'}],
-  //         received: [{text: 'I am fine'}],
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     name: 'rohit verma',
-  //     picture: fanette,
-  //     message: [
-  //       {
-  //         date: new Date(),
-  //         sent: [{text: 'Hi Maid, How are you ?'}],
-  //         received: [{text: 'I am fine'}],
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     name: 'ravi Sharma',
-  //     picture: alexs,
-  //     message: [
-  //       {
-  //         date: new Date(),
-  //         sent: [{text: 'Hi Maid, How are you ?'}],
-  //         received: [{text: 'I am fine'}],
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     name: 'kirti Sharma',
-  //     picture: pragati,
-  //     message: [
-  //       {
-  //         date: new Date(),
-  //         sent: [{text: 'Hi Maid, How are you ?'}],
-  //         received: [{text: 'I am fine'}],
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     name: 'rohit verma',
-  //     picture: fanette,
-  //     message: [
-  //       {
-  //         date: new Date(),
-  //         sent: [{text: 'Hi Maid, How are you ?'}],
-  //         received: [{text: 'I am fine'}],
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     name: 'ravi Sharma',
-  //     picture: alexs,
-  //     message: [
-  //       {
-  //         date: new Date(),
-  //         sent: [{text: 'Hi Maid, How are you ?'}],
-  //         received: [{text: 'I am fine'}],
-  //       },
-  //     ],
-  //   },
+    {
+      name: 'rohit verma',
+      picture: fanette,
+      message: [
+        {
+          sent: [{text: 'Hi Maid, How are you ?'}],
+          received: [{text: 'I am fine'}],
+        },
+      ],
+    },
+    {
+      name: 'ravi Sharma',
+      picture: alexs,
+      message: [
+        {
+          sent: [{text: 'Hi Maid, How are you ?'}],
+          received: [{text: 'I am fine'}],
+        },
+      ],
+    },
+    {
+      name: 'kirti Sharma',
+      picture: pragati,
+      message: [
+        {
+          sent: [{text: 'Hi Maid, How are you ?'}],
+          received: [{text: 'I am fine'}],
+        },
+      ],
+    },
+    {
+      name: 'rohit verma',
+      picture: fanette,
+      message: [
+        {
+          sent: [{text: 'Hi Maid, How are you ?'}],
+          received: [{text: 'I am fine'}],
+        },
+      ],
+    }
 ];
 
 const Message = ({navigation}) => {
@@ -139,7 +91,6 @@ const Message = ({navigation}) => {
   };
 
   const renderVerticalList = ({item, index}) => {
-    console.log('item rendering', item);
     return (
       <TouchableOpacity
         key={index}

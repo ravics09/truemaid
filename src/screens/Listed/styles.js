@@ -4,45 +4,42 @@ const Height = Dimensions.get('window').height;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 15,
-  },
-  renderItem: {
-    flex: 1,
-    justifyContent: 'space-between',
-    flexDirection: 'row',
-    marginVertical: 10,
-    padding: 10,
-    borderWidth: 1,
-    borderColor: 'white',
-    borderRadius: 10,
-  },
-  headerTitle: {
-    textAlign: 'center',
-    color: 'white',
-    fontSize: 20,
-    fontWeight: 'bold',
   },
   title: {
-    color: 'white',
+    color: 'black',
     fontSize: 20,
     fontWeight: 'bold',
     paddingVertical: 5,
   },
   subTitle: {
-    color: 'white',
+    color: 'black',
     fontSize: 16,
     fontWeight: 'bold',
     paddingVertical: 5,
   },
   customButton: {
-    backgroundColor: 'white',
+    backgroundColor: '#181D3D',
     borderWidth: 0.5,
     borderColor: 'white',
-    borderRadius: 20,
+    borderRadius: 50,
   },
   buttonContainer: {
     width: 100,
-    marginVertical: 5,
+    margin: 5,
+  },
+  card: {
+    flex:1,
+    backgroundColor: 'white',
+    paddingVertical: 10,
+    paddingLeft:15,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  shadowProp: {
+    borderBottomWidth: 0.5,
+    borderColor: 'lightgray',
+    borderBottomRightRadius:20,
+    borderTopLeftRadius:20
   },
 });
 

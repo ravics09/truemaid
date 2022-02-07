@@ -9,12 +9,10 @@ const styles = StyleSheet.create({
   headerBody: {
     flex: 1,
     backgroundColor: '#181D3D',
-    borderBottomRightRadius: 50,
+    borderBottomRightRadius: 40,
   },
   searchSection: {
-    alignItems: 'center',
-    paddingTop: 20,
-    boarderRadius: 50,
+    paddingTop: 20
   },
   horizontalFlatlist: {
     flex: 1,
@@ -37,7 +35,7 @@ const styles = StyleSheet.create({
   footerBody: {
     flex: 1,
     backgroundColor: 'white',
-    borderTopLeftRadius: 50,
+    borderTopLeftRadius: 40,
   },
   vericalFlatlist: {
     flex: 1,
@@ -60,9 +58,9 @@ const styles = StyleSheet.create({
   },
   shadowProp: {
     shadowColor: '#171717',
-    shadowOffset: {width: -2, height: 4},
+    shadowOffset: {width: -1, height: 3},
     shadowOpacity: 0.5,
-    shadowRadius: 5,
+    shadowRadius: 1,
   },
 });
 

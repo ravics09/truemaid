@@ -484,7 +484,8 @@ const Home = ({navigation}) => {
             <Input
               placeholder="search by area code or city"
               value={text}
-              style={{backgroundColor: 'white', paddingHorizontal: 10}}
+              inputContainerStyle={{borderBottomWidth: 0}}
+              style={{backgroundColor: 'white', borderRadius: 50, paddingHorizontal: 10}}
               onChangeText={queryText => handleSearch(queryText)}
             />
           </View>
