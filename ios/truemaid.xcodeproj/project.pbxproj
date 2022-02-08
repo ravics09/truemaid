@@ -114,7 +114,6 @@
 				50CEC2601D31F23548D7B549 /* Pods-truemaid-truemaidTests.debug.xcconfig */,
 				89A2ABB01DFD80A2EBCF0F7A /* Pods-truemaid-truemaidTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
