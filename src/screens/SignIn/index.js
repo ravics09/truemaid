@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef}  from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import {useDispatch} from 'react-redux';
 import {
   View,
@@ -8,6 +8,10 @@ import {
   ActivityIndicator,
 } from 'react-native';
 import {Input, Button} from 'react-native-elements';
+import {
+  GoogleSignin,
+  GoogleSigninButton,
+} from '@react-native-google-signin/google-signin';
 
 import {signin} from './../../actions/auth';
 
@@ -28,7 +32,7 @@ const SignIn = ({navigation}) => {
     return () => {
       // executed when unmount
       isMounted.current = false;
-    }
+    };
   }, []);
 
   const onSignIn = () => {
@@ -53,9 +57,9 @@ const SignIn = ({navigation}) => {
       })
       .finally(() => {
         if (isMounted.current) {
-          setLoading(false)
+          setLoading(false);
         }
-     });
+      });
   };
 
   return (
@@ -104,12 +108,13 @@ const SignIn = ({navigation}) => {
               titleStyle={{fontWeight: 'bold', color: 'black'}}
               onPress={() => onSignIn()}
             />
-            <Button
-              title="Sign In With Google"
-              onPress={() => alert('You will redirect to home screen')}
-              buttonStyle={styles.signInButton}
-              containerStyle={styles.buttonContainer}
-              titleStyle={{fontWeight: 'bold', color: 'black'}}
+            <GoogleSigninButton
+            style={styles.googleSignInButton}
+              // style={{width: 350, height: 50}}
+              // size={GoogleSigninButton.Size.Wide}
+              // color={GoogleSigninButton.Color.Light}
+              // onPress={this._signIn}
+              // disabled={this.state.isSigninInProgress}
             />
             <View style={styles.footer}>
               <Text style={styles.footerText}>Don’t have an account? </Text>

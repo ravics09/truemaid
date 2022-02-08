@@ -80,8 +80,35 @@ const signOut = async () => {
   // }
 };
 
+const generatePaymentToken = async (orderId, amount) => {
+ let payload = JSON.stringify({
+   orderId: orderId,
+   amount: amount
+ });
+
+ return axiosObject.post('/generatepaymenttoken', payload).then(
+  response => {
+    if (response.data.status === 200) {
+      return {
+        status: 'success',
+        token: response.data.token,
+      };
+    }
+  },
+  error => {
+    if (error.response) {
+      return {status: 'failed', message: error.response.data};
+    } else {
+      return {status: 'failed', message: 'Server Not Responding'};
+    }
+  },
+);
+
+}
+
 export default {
   signIn,
   signUp,
   signOut,
+  generatePaymentToken
 };

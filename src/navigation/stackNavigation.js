@@ -20,6 +20,7 @@ import {
   Message,
   Chat,
   ListedMaidDetail,
+  Subscription
 } from './../screens';
 import SideDrawer from './sideDrawer';
 
@@ -209,6 +210,23 @@ const ProfileStack = ({navigation}) => (
       component={ResetPassword}
       options={() => ({
         title: 'Update Password',
+        headerLeft: () => (
+          <TouchableOpacity>
+            <Ionicons
+              name="arrow-back"
+              size={25}
+              style={[{color: 'black'}]}
+              onPress={() => navigation.navigate('Profile')}
+            />
+          </TouchableOpacity>
+        ),
+      })}
+    />
+    <Stack.Screen
+      name="Subscription"
+      component={Subscription}
+      options={() => ({
+        title: 'True Maid Membership',
         headerLeft: () => (
           <TouchableOpacity>
             <Ionicons

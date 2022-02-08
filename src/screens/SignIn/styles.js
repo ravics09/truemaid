@@ -77,6 +77,14 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     paddingHorizontal:10,
   },
+  googleSignInButton: {
+    width: '100%',
+    marginVertical: 10,
+    paddingHorizontal:10,
+
+    textalign: 'center',
+    backgroundColor: 'green'
+  },
   googleButton: {
     backgroundColor: 'white',
     borderWidth: 1,

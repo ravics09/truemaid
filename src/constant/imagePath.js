@@ -9,6 +9,7 @@ const Elderlycare = require('./../assets/images/filterImages/elderlycare.png');
 const Gardener = require('./../assets/images/filterImages/gardener.png');
 const HouseMaid =  require('./../assets/images/filterImages/maid.png');
 const Placeholder = require('./../assets/images/placeholder.png');
+const Plan = require('./../assets/images/plan.png');
 
 export {
     OnboardingImg1,
@@ -20,5 +21,6 @@ export {
     Elderlycare,
     Gardener,
     HouseMaid,
-    Placeholder
+    Placeholder,
+    Plan
 }

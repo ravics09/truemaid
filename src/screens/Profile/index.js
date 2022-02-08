@@ -40,7 +40,7 @@ const Profile = ({navigation}) => {
       <View style={styles.header}>
         <View style={styles.headerSections}>
           <Text style={styles.headerTitle}>
-            Welcome back {user ? user.userName : null}
+            Welcome back {user ? user.fullName : null}
           </Text>
           <Text style={styles.headerSubTitle}>
             here are your TrueMaid membership details-
@@ -48,11 +48,11 @@ const Profile = ({navigation}) => {
         </View>
         <View style={styles.headerSections}>
           <Text style={styles.headerTitle}>Current Plan</Text>
-          <Text style={styles.headerSubTitle}>You are using free plan</Text>
+          <Text style={styles.headerSubTitle}>You Are Using Free Plan, With Direct Chat To Maid</Text>
         </View>
         <View style={styles.headerSections}>
-          <Text style={styles.headerTitle}>Date of Expiry</Text>
-          <Text style={styles.headerSubTitle}>Tue Oct 09 2022</Text>
+          <Text style={styles.headerTitle}>With True Maid Membership</Text>
+          <Text style={styles.headerSubTitle}>Get Direct Call To Maid Permission And Unlimited Maid Data Access</Text>
         </View>
       </View>
       <ScrollView style={styles.footer}>
@@ -87,11 +87,11 @@ const Profile = ({navigation}) => {
           <Text style={styles.footerSubTitle}>Change true maid password</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => navigation.navigate('EditProfile')}
+          onPress={() => navigation.navigate('Subscription')}
           style={styles.footerSection}>
-          <Text style={styles.footerTitle}>Refer and Earn </Text>
+          <Text style={styles.footerTitle}>Update Membership </Text>
           <Text style={styles.footerSubTitle}>
-            Invite your friends and earn rewards
+          You Are Using Free Plan
           </Text>
         </TouchableOpacity>
       </ScrollView>

@@ -40,7 +40,7 @@ const ResetPassword = () => {
           <ActivityIndicator size="large" color="orange" />
         </View>
       ) : (
-        <View style={{flex: 1, paddingVertical: 20}}>
+        <View style={styles.container}>
           <Input
             placeholder="Password"
             value={password}
@@ -58,7 +58,7 @@ const ResetPassword = () => {
           />
           <Button
             title="Update Password"
-            buttonStyle={styles.customBtn}
+            buttonStyle={styles.customButton}
             containerStyle={styles.buttonContainer}
             titleStyle={{fontWeight: 'bold', color: 'black'}}
             onPress={() => onUpdatePassword()}

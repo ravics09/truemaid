@@ -152,7 +152,7 @@ const EditMaidDetails = () => {
           {isOTPVerified ? null : (
             <Button
               title="Send OTP"
-              // buttonStyle={styles.signInButton}
+              buttonStyle={styles.customButton}
               containerStyle={styles.buttonContainer}
               titleStyle={{fontWeight: 'bold', color: 'black'}}
               onPress={() => onSentOTP()}
@@ -173,7 +173,7 @@ const EditMaidDetails = () => {
               />
               <Button
                 title="Verify"
-                buttonStyle={styles.customBtn}
+                buttonStyle={styles.customButton}
                 containerStyle={styles.buttonContainer}
                 titleStyle={{fontWeight: 'bold', color: 'black'}}
                 onPress={() => onAadharVerify()}
@@ -218,7 +218,7 @@ const EditMaidDetails = () => {
           />
           <Button
             title={isMaidExist? "Update": "Add"}
-            buttonStyle={styles.customBtn}
+            buttonStyle={styles.customButton}
             containerStyle={styles.buttonContainer}
             titleStyle={{fontWeight: 'bold', color: 'black'}}
             onPress={() => isMaidExist? onUpdateMaid(): onCreateMaid()}

@@ -72,7 +72,7 @@ const EditProfile = () => {
           <ActivityIndicator size="large" color="orange" />
         </View>
       ) : (
-        <View style={{flex: 1, alignItems: 'center', paddingTop: 20}}>
+        <View style={styles.container}>
           <Input
             placeholder="Username"
             value={user.userName}
@@ -118,7 +118,7 @@ const EditProfile = () => {
           />
           <Button
             title="Update"
-            buttonStyle={styles.signInButton}
+            buttonStyle={styles.customButton}
             containerStyle={styles.buttonContainer}
             titleStyle={{fontWeight: 'bold', color: 'black'}}
             onPress={() => onUpdate()}

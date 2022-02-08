@@ -6,12 +6,15 @@ const styles = StyleSheet.create({
   inputField: {
     color: 'white',
   },
-  customBtn: {
-    paddingHorizontal: 20,
+  customButton: {
+    backgroundColor: 'white',
+    borderRadius: 50,
+    color: '#181D3D'
   },
   buttonContainer: {
-    paddingHorizontal: 10,
-    paddingVertical: 10,
+    width: '100%',
+    marginVertical: 10,
+    paddingHorizontal:10
   },
 });
 

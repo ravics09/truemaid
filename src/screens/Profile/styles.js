@@ -6,6 +6,7 @@ const styles = StyleSheet.create({
   header: {
     height: HEIGHT / 4,
     paddingHorizontal:15,
+    marginBottom:15
   },
   headerSections: {
     paddingVertical: 15,

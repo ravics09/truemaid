@@ -117,7 +117,7 @@ const EditProfilePhoto = () => {
           <Button
             title="Update Photo"
             disabled={!isPhotoSelected}
-            buttonStyle={styles.customBtn}
+            buttonStyle={styles.customButton}
             containerStyle={styles.buttonContainer}
             titleStyle={{fontWeight: 'bold', color: 'black'}}
             onPress={() => onUploadPhoto()}
