@@ -3,9 +3,15 @@ import Storage from './../utils/storage';
 import {Platform} from 'react-native';
 
 const BASE_URL = 'http://localhost:9090/user';
+const PAYMENT_URL = "http://localhost:9090/payment";
 
 export let axiosObject = axios.create({
   baseURL: BASE_URL,
+  timeout: 10000,
+});
+
+export let axiosPaymentObject = axios.create({
+  baseURL: PAYMENT_URL,
   timeout: 10000,
 });
 
@@ -80,13 +86,9 @@ const signOut = async () => {
   // }
 };
 
-const generatePaymentToken = async (orderId, amount) => {
- let payload = JSON.stringify({
-   orderId: orderId,
-   amount: amount
- });
+const generatePaymentToken = async (payload) => {
 
- return axiosObject.post('/generatepaymenttoken', payload).then(
+ return axiosPaymentObject.post('/generatechecksum', payload).then(
   response => {
     if (response.data.status === 200) {
       return {

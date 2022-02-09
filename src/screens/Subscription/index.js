@@ -1,7 +1,8 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {View, Text, Image, Modal, ActivityIndicator} from 'react-native';
 import {Input, Button, CheckBox} from 'react-native-elements';
 import AllInOneSDKManager from 'paytm_allinone_react-native';
+import {useSelector, useDispatch} from 'react-redux';
 import { CALLBACK_URL, MID, URL_SCHEME } from '../../constant/paytmTest';
 import AuthService from '../../services/authService';
 import * as FilterImage from './../../constant/imagePath';
@@ -9,6 +10,7 @@ import styles from './styles';
 
 const Subscription = () => {
   const [check, setCheck] = useState(false);
+  const {user} = useSelector(state => state.auth);
   const [isLoading, setIsLoading] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
 
@@ -16,19 +18,30 @@ const Subscription = () => {
     setModalVisible(true);
   };
 
+  useEffect(() => {
+    // console.log("user id==",user._id);
+  }, []); 
+
   const onPayment = async () => {
     setIsLoading(true);
 
-    let orderId = '1234';
-    let amount = 100;
+    let orderId = '123434343434343787874';
+    let amount = '100';
 
-    const token = await AuthService.generatePaymentToken(orderId, amount);
+    let payload = {
+      orderId,
+      userId: user._id,
+      amount,
+    }
+
+    const tokenData = await AuthService.generatePaymentToken(payload);
+    console.log("token",tokenData.token);
 
     AllInOneSDKManager.startTransaction(
       orderId,
       MID,
-      token,
-      amount.toFixed(2),
+      tokenData.token,
+      amount,
       CALLBACK_URL+orderId,
       true,
       true,
